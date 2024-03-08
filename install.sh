@@ -4,7 +4,7 @@ echo "Installing 2nvim"
 
 if [ -f ~/.config/nvim/init.lua ]; then
     echo "Removing old start script"
-    echo "nvim -u $(pwd)/init.lua -- \$@" > start.sh
+    echo "xterm -fa \"M+1Code Nerd Font Mono\" -fs 10 -e nvim -u $(pwd)/init.lua -- \$@" > start.sh
     chmod +x start.sh
 fi
 

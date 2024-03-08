@@ -90,7 +90,7 @@ vim.api.nvim_set_keymap("n", "<C-S>", ":w<CR>", { noremap = true, silent = true 
 vim.api.nvim_set_keymap("n", "<C-TAB>", ":BufferNext<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<CS-TAB>", ":BufferPrevious<CR>", { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap("n", "<C-W>", ":BufferClose<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-Q>", ":BufferClose<CR>", { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap("n", "<C-]>", ":BufferNext<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<CS-]>", ":BufferPrevious<CR>", { noremap = true, silent = true })
