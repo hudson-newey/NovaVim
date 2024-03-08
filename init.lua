@@ -40,6 +40,8 @@ require("lazy").setup({
 	"wfxr/minimap.vim",
 	"sbdchd/neoformat",
 	"github/copilot.vim",
+	"ahmedkhalf/project.nvim", 
+	"mg979/vim-visual-multi", 
 	{'romgrk/barbar.nvim', opts = {}, init = function() vim.g.barbar_auto_setup = false end },
 	{
 	    'windwp/nvim-autopairs',
@@ -64,10 +66,25 @@ require("nvterm").setup()
 
 require('gitsigns').setup()
 
-require("nvim-tree").setup()
+require("project_nvim").setup()
+
+require("nvim-tree").setup({
+	filters = {
+		git_ignored = false,
+	}
+})
 
 require("lualine").setup {
 	options = { theme = "codedark" }
+}
+
+require("telescope").setup {
+	defaults = {
+		layout_config = {
+			prompt_position = "top",
+		},
+		file_ignore_patterns = { "node_modules", ".git" }
+	}
 }
 
 require("ibl").setup()
@@ -75,17 +92,23 @@ require("ibl").setup()
 local terminal = require("nvterm.terminal")
 
 vim.api.nvim_set_keymap("n", "<C-P>", ":Telescope find_files<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<C-O>", ":Telescope commands<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<CS-P>", ":Telescope commands<CR>", { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap("n", "<C-O>", ":Telescope projects<CR>", { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap("n", "<C-B>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<CS-E>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap("n", "<CS-F>", ":lua require'telescope.builtin'.live_grep{}<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-F>", ":Telescope search_history<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<CS-F>", ":Telescope live_grep<CR>", { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap("n", "<C-D>", ":w<CR>", { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap("n", "<CS-X>", ":Mason<CR>", { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap("n", "<C-S>", ":w<CR>", { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap("n", "<C-\\>", ":vs<CR>", { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap("n", "<C-TAB>", ":BufferNext<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<CS-TAB>", ":BufferPrevious<CR>", { noremap = true, silent = true })
@@ -113,6 +136,9 @@ vim.cmd "set nu"
 
 -- enable minimap
 vim.cmd "let g:minimap_width = 15"
+
+-- "fix" vertical split because I didn't like how it worked
+vim.cmd "vertical resize +10"
 
 --[=====[
 vim.cmd[[
