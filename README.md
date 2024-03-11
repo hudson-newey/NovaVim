@@ -7,7 +7,7 @@ eg. "Towards a NVIM config"
 
 **This project is not affiliated or associated with the NeoVim project in any way.**
 
-![image](https://github.com/hudson-newey/2nvim/assets/33742269/9087898f-426e-4f3a-8ce1-13f4e0673589)
+![image](https://github.com/hudson-newey/2nvim/assets/33742269/c738b231-ea40-4753-a69e-647441cb9d75)
 
 ## Installation
 
