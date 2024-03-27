@@ -45,6 +45,14 @@ By providing a seperate executable, I was able to
 - xterm is a ligher weight application that saves memory and gives me more granular control over the keybindings
 - **You can start it from application launchers**. It's annoting to start NeoVim from application launchers (eg. `Ctrl + D` in i3). Running `$ nvim` does not start neovim. Running `$ 2nvim` does start a neovim window.
 
+## Features
+
+- **LSP** (Language Server Protocol) for autocompletion and linting
+- **TreeSitter** for syntax highlighting
+- **Telescope** for file picker and fuzzy finder
+- **minimap.vim** for a minimap
+- **NerdTree** for file explorer
+
 ## Default keybindings
 
 - `Ctrl + S` Save

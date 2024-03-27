@@ -37,7 +37,18 @@ require("lazy").setup({
 	"lewis6991/gitsigns.nvim",
 	"nvim-tree/nvim-tree.lua",
 	"nvim-tree/nvim-web-devicons",
-	"wfxr/minimap.vim",
+	{
+	    "wfxr/minimap.vim",
+	    build = "cargo install --locked code-minimap",
+	    lazy = false,
+	    cmd = { "Minimap", "MinimapClose", "MinimapToggle", "MinimapRefresh", "MinimapUpdateHighlight" },
+	    init = function()
+		vim.cmd("let g:minimap_width = 14")
+		-- disable auto start because it's buggy when opening a directory
+		vim.cmd("let g:minimap_auto_start = 0")
+		vim.cmd("let g:minimap_auto_start_win_enter = 1")
+	    end,
+	},
 	"sbdchd/neoformat",
 	"github/copilot.vim",
 	"ahmedkhalf/project.nvim", 
@@ -107,6 +118,8 @@ vim.api.nvim_set_keymap("n", "<C-D>", ":w<CR>", { noremap = true, silent = true 
 vim.api.nvim_set_keymap("n", "<CS-X>", ":Mason<CR>", { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap("n", "<C-S>", ":w<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-Z>", ":undo<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<CS-Z>", ":redo<CR>", { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap("n", "<C-\\>", ":vs<CR>", { noremap = true, silent = true })
 
@@ -133,9 +146,6 @@ vim.cmd "let &colorcolumn='80,120'"
 
 -- enable line numbers
 vim.cmd "set nu"
-
--- enable minimap
-vim.cmd "let g:minimap_width = 15"
 
 -- "fix" vertical split because I didn't like how it worked
 vim.cmd "vertical resize +10"
