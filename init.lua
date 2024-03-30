@@ -89,14 +89,24 @@ require("lualine").setup {
 	options = { theme = "codedark" }
 }
 
-require("telescope").setup {
+local telescope = require("telescope")
+telescope.setup {
 	defaults = {
 		layout_config = {
 			prompt_position = "top",
 		},
-		file_ignore_patterns = { "node_modules", ".git" }
-	}
+		file_ignore_patterns = { "node_modules", ".git" },
+	},
+	buffers = {
+		sort_lastused = true,
+		sort_mru = true,
+	},
 }
+require('telescope.builtin').buffers({
+	sort_lastused = true,
+	ignore_current_buffer = true,
+	sort_mru = true
+})
 
 require("ibl").setup()
 
@@ -146,6 +156,11 @@ vim.cmd "let &colorcolumn='80,120'"
 
 -- enable line numbers
 vim.cmd "set nu"
+
+-- show trailing whitespace
+-- TODO: This isn't currently working with indent-blankline
+-- vim.cmd "set list"
+-- vim.cmd "set listchars=trail:·,tab:>-"
 
 -- "fix" vertical split because I didn't like how it worked
 vim.cmd "vertical resize +10"
@@ -257,6 +272,9 @@ lspconfig.angularls.setup{ capabilities = capabilities }
 -- lspconfig.lua_ls.setup { capabilities = capabilities }
 lspconfig.bashls.setup{ capabilities = capabilities }
 lspconfig.golangci_lint_ls.setup{ capabilities = capabilities }
+lspconfig.gopls.setup{ capabilities = capabilities }
+lspconfig.templ.setup{ capabilities = capabilities }
+lspconfig.htmx.setup{ capabilities = capabilities }
 lspconfig.html.setup{ capabilities = capabilities }
 lspconfig.cssls.setup{ capabilities = capabilities }
 lspconfig.ruby_ls.setup{ capabilities = capabilities }
