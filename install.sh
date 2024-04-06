@@ -1,16 +1,15 @@
 #!/bin/bash
+set -eou pipefail
 
-echo "Installing 2nvim"
+declare install_dir="$HOME/.local/bin/2nvim"
 
-if [ -f ~/.config/nvim/init.lua ]; then
-    echo "Removing old start script"
-    echo "xterm +sb -bg black -fg white -fa \"M+1Code Nerd Font Mono\" -fs 10 -name $(pwd)/.Xresources -e nvim -u $(pwd)/init.lua -- \$@ &" > start.sh
-    chmod +x start.sh
+if [ -f $install_dir ]; then
+    echo "Removing old 2nvim install"
+    rm $install_dir
 fi
 
-if [ -f ~/.local/bin/2nvim ]; then
-    echo "Removing old 2nvim"
-    rm ~/.local/bin/2nvim
-fi
+echo "xterm +sb -bg black -fg white -fa \"M+1Code Nerd Font Mono\" -fs 10 -name $(pwd)/xterm/.Xresources -e nvim -u $(pwd)/init.lua -- \$@ &" > start.sh
+chmod +x start.sh
 
-ln -s $(pwd)/start.sh ~/.local/bin/2nvim
+echo "Creating symlink in $install_dir"
+ln -s $(pwd)/start.sh $install_dir
