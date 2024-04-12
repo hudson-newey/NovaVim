@@ -1,8 +1,8 @@
-require "dependencies"
-require "keymap"
-require "languages"
-require "completions"
-require "ui"
+require("modules.dependencies")
+require("modules.keymap")
+require("modules.languages")
+require("modules.completions")
+require("modules.ui")
 
 require("nvim-autopairs").setup{}
 require("mason").setup({

@@ -36,3 +36,7 @@ end
 
 vim.cmd "vnoremap < <gv"
 vim.cmd "vnoremap > >gv"
+
+-- I remap Ctrl+D to Ctrl+N because the multi word select extension default to Ctrl+N
+-- This is not what I like, therefore, I've rebinded it to Ctrl+D (same as VsCode and Sublime Text)
+vim.cmd "nnoremap <C-d> <C-n>"

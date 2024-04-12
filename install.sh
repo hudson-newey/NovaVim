@@ -8,7 +8,18 @@ if [ -f $install_dir ]; then
     rm $install_dir
 fi
 
-echo "xterm +sb -bg black -fg white -fa \"M+1Code Nerd Font Mono\" -fs 10 -name $(pwd)/xterm/.Xresources -e nvim -u $(pwd)/init.lua -- \$@ &" > start.sh
+cat << EOF > start.sh
+#!/bin/bash
+xrdb -query | grep -q 'XTerm\*vt100\.translationsa' |> /dev/null
+if [ \$? != 0 ]; then xterm -e xrdb -merge ./xterm/.Xresources; fi
+xterm +sb -bg black -fg white -fa "M+1Code Nerd Font Mono" -fs 10 -title 2nvim -name $(pwd)/xterm/.Xresources -e nvim -u $(pwd)/init.lua -- \$@ &
+EOF
+
+cat << EOF > init.lua
+package.path = '$(pwd)/?.lua;'..package.path
+require("setup")
+EOF
+
 chmod +x start.sh
 
 echo "Creating symlink in $install_dir"
