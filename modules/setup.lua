@@ -21,12 +21,6 @@ require('gitsigns').setup()
 
 require("project_nvim").setup()
 
-require("nvim-tree").setup({
-	filters = {
-		git_ignored = false,
-	}
-})
-
 require("lualine").setup {
 	options = { theme = "codedark" }
 }
@@ -53,3 +47,35 @@ require('telescope.builtin').buffers({
 require("ibl").setup()
 
 require("nvterm.terminal")
+vim.opt.termguicolors = true
+
+require("nvim-highlight-colors").setup {
+	render = 'virtual',
+	virtual_symbol = '■',
+	enable_named_colors = true,
+	enable_tailwind = true,
+}
+
+-- these are my color overrides
+-- If I don't import this module last, tree sitter will overwrite the colors
+require("modules.highlights")
+
+require("neo-tree").setup {
+	window = {
+		width = 35,
+	},
+	icon = {
+		folder_empty = "",
+	},
+	filesystem = {
+		filtered_items = {
+			hide_dotfiles = false,
+			hide_gitignored = false,
+			hide_hidden = false,
+		},
+	},
+	mappings = {
+		["v"] = "open_vsplit",
+		["^v"] = "open_vsplit",
+	},
+}

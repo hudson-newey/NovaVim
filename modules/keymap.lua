@@ -5,8 +5,8 @@ local keymap = {
 
 	{ key = "C-O", command = "Telescope Projects" },
 
-	{ key = "C-B", command = "NvimTreeToggle" },
-	{ key = "CS-E", command = "NvimTreeToggle" },
+	{ key = "C-B", command = "Neotree toggle" },
+	{ key = "CS-E", command = "Neotree toggle" },
 
 	{ key = "C-F", command = "Telescope search_history" },
 	{ key = "CS-F", command = "Telescope live_grep" },

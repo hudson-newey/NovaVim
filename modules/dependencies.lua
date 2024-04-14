@@ -35,8 +35,16 @@ require("lazy").setup({
 	'hrsh7th/vim-vsnip',
 	'hrsh7th/vim-vsnip-integ',
 	"lewis6991/gitsigns.nvim",
-	"nvim-tree/nvim-tree.lua",
-	"nvim-tree/nvim-web-devicons",
+	{
+	    "nvim-neo-tree/neo-tree.nvim",
+	    branch = "v3.x",
+	    dependencies = {
+	      "nvim-lua/plenary.nvim",
+	      "nvim-tree/nvim-web-devicons",
+	      "MunifTanjim/nui.nvim",
+	      -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+	    }
+	},
 	{
 	    "wfxr/minimap.vim",
 	    build = "cargo install --locked code-minimap",
@@ -53,6 +61,7 @@ require("lazy").setup({
 	"github/copilot.vim",
 	"ahmedkhalf/project.nvim", 
 	"mg979/vim-visual-multi", 
+	"brenoprata10/nvim-highlight-colors",
 	{'romgrk/barbar.nvim', opts = {}, init = function() vim.g.barbar_auto_setup = false end },
 	{
 	    'windwp/nvim-autopairs',
