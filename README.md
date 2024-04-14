@@ -1,6 +1,6 @@
 # NovaVim
 
-![image](https://github.com/hudson-newey/2nvim/assets/33742269/97efa51e-5f65-4ae8-9d90-feeb02d7c9af)
+![image](https://github.com/hudson-newey/NovaVim/assets/33742269/70fe99fd-ed40-4234-b15d-5d7036b8dd48)
 
 ## Installation
 
