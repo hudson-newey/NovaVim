@@ -21,6 +21,16 @@ require("lazy").setup({
 	    "nvim-lualine/lualine.nvim",
 	    dependencies = { "nvim-tree/nvim-web-devicons" }
 	},
+	{
+		-- for breadcrumbs at the top of the window
+		"utilyre/barbecue.nvim",
+		name = "barbecue",
+		version = "*",
+		dependencies = {
+			"SmiteshP/nvim-navic",
+			"nvim-tree/nvim-web-devicons",
+		},
+	},
 	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 	"NvChad/nvterm",
 	"marko-cerovac/material.nvim",

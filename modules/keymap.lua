@@ -1,12 +1,11 @@
--- TODO: change this to an array of objects
 local keymap = {
 	{ key = "C-P", command = "Telescope find_files" },
-	{ key = "C-SP", command = "Telescope commands" },
+	{ key = "CS-P", command = "Telescope commands" },
 
 	{ key = "C-O", command = "Telescope Projects" },
 
 	{ key = "C-B", command = "Neotree toggle" },
-	{ key = "CS-E", command = "Neotree toggle" },
+	{ key = "CS-E", command = "Neotree reveal" },
 
 	{ key = "C-F", command = "Telescope search_history" },
 	{ key = "CS-F", command = "Telescope live_grep" },
@@ -21,6 +20,8 @@ local keymap = {
 
 	{ key = "C-TAB", command = "BufferNext" },
 	{ key = "CS-TAB", command = "BufferPrevious" },
+
+	{ key = "ESC", command = "noh" },
 
 	{ key = "C-Q", command = "BufferClose" },
 

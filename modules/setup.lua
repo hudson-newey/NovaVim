@@ -3,6 +3,7 @@ require("modules.keymap")
 require("modules.languages")
 require("modules.completions")
 require("modules.ui")
+require("modules.explorer")
 
 require("nvim-autopairs").setup{}
 require("mason").setup({
@@ -79,3 +80,6 @@ require("neo-tree").setup {
 		["^v"] = "open_vsplit",
 	},
 }
+
+require("barbecue").setup()
+require("barbecue.ui").toggle(true)

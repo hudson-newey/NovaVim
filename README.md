@@ -51,18 +51,3 @@ alias nvim=2nvim
 
 - `Ctrl + Shift + C` Copy (not the same as nvim yank)
 - `Ctrl + Shift + V` Paste (not the same as nvim paste)
-
-## But why make it so complicated
-
-I wanted to make a configuration that used VsCode keybindings, but the best terminal applications (Konsole on Linux, and Window Terminal on Windows) comes with built in keybindings that can't be overwritten. Some of these keybindings clash with the VsCode keybindings.
-
-eg. I want `Ctrl+Tab` to switch between NeoVim tabs, but both Konsole and Windows Terminal uses `Ctrl+Tab` to switch between terminal tabs
-
-By providing a seperate executable, I was able to
-
-- Define the baseline terminal keybindings for all installs
-  - Use the "intuitive" keybindings that are overwritten by the terminal in my neovim config
-- Define a standard font
-- Don't overwrite `nvim` (so I can change between configurations easily and uninstall without any reminant issues)
-- xterm is a ligher weight application that saves memory and gives me more granular control over the keybindings
-- **You can start it from application launchers**. It's annoting to start NeoVim from application launchers (eg. `Ctrl + D` in i3). Running `$ nvim` does not start neovim. Running `$ 2nvim` does start a neovim window.
