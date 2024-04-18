@@ -1,3 +1,10 @@
 [font]
-#normal = { family = "M+1Code Nerd Font Mono", style = "Regular" }
+normal = { family = "M+1Code Nerd Font Mono", style = "Regular" }
 size=10
+
+[keyboard]
+bindings = [
+	{ key = "F", mods = "Control | Shift", action = "None" },
+	#{ key = "Insert", mods = "Control", action = "Copy" },
+	#{ key = "Insert", mods = "Shift", action = "Paste" }
+]
