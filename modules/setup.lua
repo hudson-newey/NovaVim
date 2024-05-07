@@ -1,3 +1,8 @@
+-- The initial start up time can be > 5 seconds
+-- Because of this, we want to provide some user feedback that we are
+-- Installing the dependencies
+io.write "Starting NovaVim...";
+
 require("modules.dependencies")
 require("modules.keymap")
 require("modules.languages")

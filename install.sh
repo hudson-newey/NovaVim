@@ -10,7 +10,7 @@ if [ -f $install_dir ]; then
 fi
 
 which alacritty > /dev/null
-if [ $? != 1 ]; then
+if [ $? != 0 ]; then
 	echo "
 Alacritty not found, we recommend using alacritty over xterm as the terminal emulator
 To install alacritty, follow the instructions at

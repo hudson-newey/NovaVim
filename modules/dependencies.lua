@@ -1,5 +1,21 @@
+function dir_exists(path)
+  if (lfs.attributes(path, "mode") == "directory") then
+    return true
+  end
+  return false
+end
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+local telescopePath = lazypath .. "/telescope.nvim"
+
+local hasLazyInstalled = (vim.uv or vim.loop).fs_stat(lazypath)
+local hasTelescopeInstalled = (vim.uv or vim.loop).fs_stat(telescopePath)
+
+-- sometimes lazy can be stuck in a partially installed state
+-- in this case, Lazy will be installed under ~/.local/share/nvim, but it won't have any extensions
+-- Therefore, we check for an expected depdendency. If we do not find it, we reinstall Lazy
+-- In an attempt to self-resolve issues
+if not hasLazyInstalled or not hasTelescopeInstalled then
   vim.fn.system({
     "git",
     "clone",
