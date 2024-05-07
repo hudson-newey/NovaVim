@@ -26,7 +26,7 @@ $ ./install.sh
 
 ### Using the automatic installation script
 
-Because you are installing by piping to shell, please check the script at <https://raw.githubusercontent.com/hudson-newey/NovaVim/main/install.sh> before running it
+Because you are installing by piping to shell, please check the script at <https://raw.githubusercontent.com/hudson-newey/NovaVim/main/web-install.sh> and <https://raw.githubusercontent.com/hudson-newey/NovaVim/main/install.sh> before running it
 
 ```sh
 $ curl -sL https://raw.githubusercontent.com/hudson-newey/NovaVim/main/web-install.sh | sh
