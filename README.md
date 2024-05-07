@@ -4,23 +4,33 @@
 
 ## Installation
 
-1.
+Installing will create an executable in `~/.local/bin` called `2nvim` that will open NovaVim
+
+1. Install the "M+1Code Nerd Font Mono" font
+
+### Using the Git repository (recommened)
+
+2. Clone the GitHub repository
+
+```sh
+$ git clone https://github.com/hudson-newey/NovaVim.git
+>
+```
+
+3.
 
 ```sh
 $ ./install.sh
 >
 ```
 
-This creates an executable in your path called `2nvim` that will open NeoVim with the configuration.
+### Using the automatic installation script
 
-2. I recommend you install the "M+1Code Nerd Font Mono" font
-
-3. If you don't have `xterm`, install it through you package manager
-
-4. _If_ you want to replace nvim with 2nvim, you can add the following to your `.bashrc` or `.zshrc`:
+Because you are installing by piping to shell, please check the script at <https://raw.githubusercontent.com/hudson-newey/NovaVim/main/install.sh> before running it
 
 ```sh
-alias nvim=2nvim
+$ curl -sL https://raw.githubusercontent.com/hudson-newey/NovaVim/main/web-install.sh | sh
+>
 ```
 
 ## Features
