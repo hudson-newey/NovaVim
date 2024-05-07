@@ -3,14 +3,22 @@ set -eou pipefail
 
 declare install_dir="$HOME/.local/bin/2nvim"
 declare use_alacritty=true;
+declare is_wsl=false;
 
 if [ -f $install_dir ]; then
 	echo "Removing old 2nvim install"
 	rm $install_dir
 fi
 
+if uname -a | grep -q '^Linux.*Microsoft'; then
+	is_wsl=true
+
+	echo "Warning! Using NovaVim in WSL is not recommended as we cannot maintain a terminal emulator config"
+	read -p "Press any key to continue..."
+fi
+
 which alacritty > /dev/null
-if [ $? != 0 ]; then
+if [ $? != 0 ] && [ $is_wsl == false ]; then
 	echo "
 Alacritty not found, we recommend using alacritty over xterm as the terminal emulator
 To install alacritty, follow the instructions at
@@ -30,7 +38,7 @@ cat << EOF >> start.sh
 if [ \$# -eq 0 ]; then \$1 = "."; fi
 EOF
 
-if [ $use_alacritty == true ]; then
+if [ $use_alacritty == true ] && [ $is_wsl == false ]; then
 	# alacritty startup command
 	cat << EOF >> start.sh
 alacritty -T NovaVim --config-file $(pwd)/alacritty/alacritty.toml -e nvim -u $(pwd)/init.lua -- \$@ & > /dev/null
