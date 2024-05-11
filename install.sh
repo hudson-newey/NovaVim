@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
 set -eou pipefail
 
-declare install_dir="$HOME/.local/bin/2nvim"
+declare path_dir="$HOME/.local/bin/2nvim"
 declare use_alacritty=true;
 declare is_wsl=false;
 
-if [ -f $install_dir ]; then
+if [ -f $path_dir ]; then
 	echo "Removing old 2nvim install"
-	rm $install_dir
-else
-	mkdir $install_dir
+	rm $path_dir
 fi
 
 if uname -a | grep -q '^Linux.*Microsoft'; then
@@ -34,37 +32,48 @@ To install alacritty, follow the instructions at
 	fi
 fi
 
-echo "#!/bin/bash" > start.sh
+# even though it is a bit slower, I invoke PWD in a sub shell every time I reference
+# a local file to keep consistant with the reset of the script
+# this is because sometimes I refer to absolute paths
+# to prevent the program from breaking due to the mixture of absolute and relative paths
+# I have opted to just use relative paths (even if that means a perf hit during install)
+echo "#!/usr/bin/env bash" > "$(pwd)/start.sh"
 
-cat << EOF >> start.sh
-if [ \$# -eq 0 ]; then \$1 = "."; fi
+# If no arguments are provided to 2nvim, we want to make it so that it starts
+# in the current directory
+cat << EOF >> "$(pwd)/start.sh"
+if [ \$# -eq 0 ]; then \$1 = "\$(pwd)"; fi
 EOF
 
 if [ $use_alacritty == true ] && [ $is_wsl == false ]; then
 	# alacritty startup command
-	cat << EOF >> start.sh
-alacritty -T NovaVim --config-file $(pwd)/alacritty/alacritty.toml -e nvim -u $(pwd)/init.lua -- \$@ & > /dev/null
+	cat << EOF >> "$(pwd)/start.sh"
+	alacritty -T "\$1 - NovaVim" --config-file $(pwd)/alacritty/alacritty.toml -e nvim -u $(pwd)/init.lua -- \$@ & > /dev/null
 EOF
 else
 	# xterm startup command
 	# this is so complicated because we have to load in the fonts, overwrite ctrl + V etc...
-	cat << EOF >> start.sh
-xterm +sb -bg black -fg white -fa "M+1Code Nerd Font Mono" -fs 10 -title NovaVim -name $(pwd)/xterm/.Xresources -e nvim -u $(pwd)/init.lua -- \$@ & > /dev/null
+	cat << EOF >> "./start.sh"
+	xterm +sb -bg black -fg white -fa "M+1Code Nerd Font Mono" -fs 10 -title "\$1 - NovaVim" -name $(pwd)/xterm/.Xresources -e nvim -u $(pwd)/init.lua -- \$@ & > /dev/null
 xrdb -query | grep -q 'XTerm\*vt100\.translationsa' |> /dev/null
 if [ \$? != 0 ]; then xterm -e xrdb -merge ./xterm/.Xresources; fi
 EOF
 fi
 
+# TODO: Handle differnt installation targets better
 if [ $is_wsl == true ]; then
+	cat << EOF >> "$(pwd)/start.sh"
+	nvim -u $(pwd)/init.lua -- \$@
+EOF
 fi
 
-cat << EOF > init.lua
+cat << EOF > "$(pwd)/init.lua"
 package.path = '$(pwd)/?.lua;'..package.path
 package.path = '$(pwd)/modules/?.lua;'..package.path
-require("setup")
+require('setup')
 EOF
 
-chmod +x start.sh
+chmod +x "$(pwd)/start.sh"
 
-echo "Creating symlink in $install_dir"
-ln -s $(pwd)/start.sh $install_dir
+echo "Creating symlink in $path_dir"
+ln -s "$(pwd)/start.sh" $path_dir

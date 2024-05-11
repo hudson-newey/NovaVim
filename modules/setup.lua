@@ -9,6 +9,7 @@ require("modules.languages")
 require("modules.completions")
 require("modules.ui")
 require("modules.explorer")
+require("modules.settings")
 
 require("nvim-autopairs").setup{}
 require("mason").setup({

@@ -10,11 +10,11 @@ vim.cmd "let &colorcolumn='80,120'"
 vim.cmd "set nu"
 
 -- show trailing whitespace
--- TODO: This isn't currently working with indent-blankline
+-- TODO: This isn"t currently working with indent-blankline
 -- vim.cmd "set list"
 -- vim.cmd "set listchars=trail:·,tab:>-"
 
--- "fix" vertical split because I didn't like how it worked
+-- "fix" vertical split because I didn"t like how it worked
 vim.cmd "vertical resize +10"
 
 -- colorschemes I like

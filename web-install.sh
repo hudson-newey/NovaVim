@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -eou pipefail
 
-declare installationLocation="/home/$(whoami)/.local/bin/NovaVim"
+declare installationLocation="$HOME/.local/bin/NovaVim"
 
 echo "Installing to $installationLocation"
 

@@ -28,7 +28,7 @@ local keymap = {
 	{ key = "C-]", command = "BufferNext" },
 	{ key = "CS-]", command = "BufferPrevious" },
 	{ key = "C-Q", command = "BufferClose" },
-	{ key = "C-j", command = "lua require("nvterm.terminal").toggle "horizontal"" },
+	{ key = "C-j", command = "lua require('nvterm.terminal').toggle 'horizontal'" },
 }
 
 for _, v in ipairs(keymap) do
