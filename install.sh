@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -eou pipefail
 
 declare install_dir="$HOME/.local/bin/2nvim"
@@ -8,6 +8,8 @@ declare is_wsl=false;
 if [ -f $install_dir ]; then
 	echo "Removing old 2nvim install"
 	rm $install_dir
+else
+	mkdir $install_dir
 fi
 
 if uname -a | grep -q '^Linux.*Microsoft'; then
@@ -51,6 +53,9 @@ xterm +sb -bg black -fg white -fa "M+1Code Nerd Font Mono" -fs 10 -title NovaVim
 xrdb -query | grep -q 'XTerm\*vt100\.translationsa' |> /dev/null
 if [ \$? != 0 ]; then xterm -e xrdb -merge ./xterm/.Xresources; fi
 EOF
+fi
+
+if [ $is_wsl == true ]; then
 fi
 
 cat << EOF > init.lua

@@ -1,7 +1,7 @@
 local lastUsedFile = ""
 
 function RevealFileInExplorer()
-	local currentFile = expand('%:t')
+	local currentFile = expand("%:t")
 
 	if currentFile ~= nil and currentFile ~= lastUsedFile then
 		--vim.cmd "Neotree reveal"

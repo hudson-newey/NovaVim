@@ -23,7 +23,7 @@ require("mason").setup({
 
 require("nvterm").setup()
 
-require('gitsigns').setup()
+require("gitsigns").setup()
 
 require("project_nvim").setup()
 
@@ -44,7 +44,7 @@ telescope.setup {
 		sort_mru = true,
 	},
 }
-require('telescope.builtin').buffers({
+require("telescope.builtin").buffers({
 	sort_lastused = true,
 	ignore_current_buffer = true,
 	sort_mru = true
@@ -56,14 +56,14 @@ require("nvterm.terminal")
 vim.opt.termguicolors = true
 
 require("nvim-highlight-colors").setup {
-	render = 'virtual',
-	virtual_symbol = '■',
+	render = "virtual",
+	virtual_symbol = "■",
 	enable_named_colors = true,
 	enable_tailwind = true,
 }
 
 -- these are my color overrides
--- If I don't import this module last, tree sitter will overwrite the colors
+-- If I don"t import this module last, tree sitter will overwrite the colors
 require("modules.highlights")
 
 require("neo-tree").setup {

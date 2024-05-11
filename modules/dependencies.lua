@@ -12,7 +12,7 @@ local hasLazyInstalled = (vim.uv or vim.loop).fs_stat(lazypath)
 local hasTelescopeInstalled = (vim.uv or vim.loop).fs_stat(telescopePath)
 
 -- sometimes lazy can be stuck in a partially installed state
--- in this case, Lazy will be installed under ~/.local/share/nvim, but it won't have any extensions
+-- in this case, Lazy will be installed under ~/.local/share/nvim, but it won"t have any extensions
 -- Therefore, we check for an expected depdendency. If we do not find it, we reinstall Lazy
 -- In an attempt to self-resolve issues
 if not hasLazyInstalled or not hasTelescopeInstalled then
@@ -58,8 +58,8 @@ require("lazy").setup({
 	"hrsh7th/cmp-path",
 	"hrsh7th/cmp-cmdline",
 	"hrsh7th/nvim-cmp",
-	'hrsh7th/vim-vsnip',
-	'hrsh7th/vim-vsnip-integ',
+	"hrsh7th/vim-vsnip",
+	"hrsh7th/vim-vsnip-integ",
 	"lewis6991/gitsigns.nvim",
 	{
 	    "nvim-neo-tree/neo-tree.nvim",
@@ -78,7 +78,7 @@ require("lazy").setup({
 	    cmd = { "Minimap", "MinimapClose", "MinimapToggle", "MinimapRefresh", "MinimapUpdateHighlight" },
 	    init = function()
 		vim.cmd("let g:minimap_width = 14")
-		-- disable auto start because it's buggy when opening a directory
+		-- disable auto start because it"s buggy when opening a directory
 		vim.cmd("let g:minimap_auto_start = 0")
 		vim.cmd("let g:minimap_auto_start_win_enter = 1")
 	    end,
@@ -88,9 +88,9 @@ require("lazy").setup({
 	"ahmedkhalf/project.nvim", 
 	"mg979/vim-visual-multi", 
 	"brenoprata10/nvim-highlight-colors",
-	{'romgrk/barbar.nvim', opts = {}, init = function() vim.g.barbar_auto_setup = false end },
+	{"romgrk/barbar.nvim", opts = {}, init = function() vim.g.barbar_auto_setup = false end },
 	{
-	    'windwp/nvim-autopairs',
+	    "windwp/nvim-autopairs",
 	    event = "InsertEnter",
 	    opts = {}
 	}

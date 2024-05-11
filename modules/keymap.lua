@@ -28,7 +28,7 @@ local keymap = {
 	{ key = "C-]", command = "BufferNext" },
 	{ key = "CS-]", command = "BufferPrevious" },
 	{ key = "C-Q", command = "BufferClose" },
-	{ key = "C-j", command = "lua require('nvterm.terminal').toggle 'horizontal'" },
+	{ key = "C-j", command = "lua require("nvterm.terminal").toggle "horizontal"" },
 }
 
 for _, v in ipairs(keymap) do
@@ -39,5 +39,5 @@ vim.cmd "vnoremap < <gv"
 vim.cmd "vnoremap > >gv"
 
 -- I remap Ctrl+D to Ctrl+N because the multi word select extension default to Ctrl+N
--- This is not what I like, therefore, I've rebinded it to Ctrl+D (same as VsCode and Sublime Text)
+-- This is not what I like, therefore, I"ve rebinded it to Ctrl+D (same as VsCode and Sublime Text)
 vim.cmd "nnoremap <C-d> <C-n>"
