@@ -42,19 +42,24 @@ echo "#!/usr/bin/env bash" > "$(pwd)/start.sh"
 # If no arguments are provided to 2nvim, we want to make it so that it starts
 # in the current directory
 cat << EOF >> "$(pwd)/start.sh"
-if [ \$# -eq 0 ]; then \$1 = "\$(pwd)"; fi
+declare startPath=".";
+if [ \$# -eq 0 ]; then
+	startPath="\$(pwd)"
+else
+	startPath="\$(pwd)/\$1"
+fi
 EOF
 
 if [ $use_alacritty == true ] && [ $is_wsl == false ]; then
 	# alacritty startup command
 	cat << EOF >> "$(pwd)/start.sh"
-	alacritty -T "\$1 - NovaVim" --config-file $(pwd)/alacritty/alacritty.toml -e nvim -u $(pwd)/init.lua -- \$@ & > /dev/null
+	alacritty -T "\$startPath - NovaVim" --config-file $(pwd)/alacritty/alacritty.toml -e nvim -u $(pwd)/init.lua -- \$@ & > /dev/null
 EOF
 else
 	# xterm startup command
 	# this is so complicated because we have to load in the fonts, overwrite ctrl + V etc...
 	cat << EOF >> "./start.sh"
-	xterm +sb -bg black -fg white -fa "M+1Code Nerd Font Mono" -fs 10 -title "\$1 - NovaVim" -name $(pwd)/xterm/.Xresources -e nvim -u $(pwd)/init.lua -- \$@ & > /dev/null
+	xterm +sb -bg black -fg white -fa "M+1Code Nerd Font Mono" -fs 10 -title "\$startPath - NovaVim" -name $(pwd)/xterm/.Xresources -e nvim -u $(pwd)/init.lua -- \$@ & > /dev/null
 xrdb -query | grep -q 'XTerm\*vt100\.translationsa' |> /dev/null
 if [ \$? != 0 ]; then xterm -e xrdb -merge ./xterm/.Xresources; fi
 EOF
