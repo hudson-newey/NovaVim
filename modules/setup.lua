@@ -8,6 +8,7 @@ require("modules.keymap")
 require("modules.languages")
 require("modules.completions")
 require("modules.ui")
+require("modules.commands")
 require("modules.explorer")
 require("modules.settings")
 
