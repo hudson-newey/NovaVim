@@ -45,6 +45,11 @@ telescope.setup {
 		sort_lastused = true,
 		sort_mru = true,
 	},
+	pickers = {
+		colorscheme = {
+			enable_preview = true,
+		},
+	},
 }
 require("telescope.builtin").buffers({
 	sort_lastused = true,

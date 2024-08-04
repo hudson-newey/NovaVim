@@ -2,7 +2,7 @@ local keymap = {
 	{ key = "C-P", command = "Telescope find_files" },
 	{ key = "CS-P", command = "Telescope commands" },
 
-	{ key = "C-O", command = "Telescope Projects" },
+	{ key = "C-O", command = "Telescope projects" },
 
 	{ key = "C-B", command = "Neotree toggle" },
 	{ key = "CS-E", command = "Neotree reveal" },
@@ -17,6 +17,7 @@ local keymap = {
 	{ key = "CS-Z", command = "redo" },
 
 	{ key = "C-\\", command = "vs" },
+	{ key = "CS-\\", command = "split" },
 
 	{ key = "C-TAB", command = "BufferNext" },
 	{ key = "CS-TAB", command = "BufferPrevious" },
@@ -28,7 +29,10 @@ local keymap = {
 	{ key = "C-]", command = "BufferNext" },
 	{ key = "CS-]", command = "BufferPrevious" },
 	{ key = "C-Q", command = "BufferClose" },
+
 	{ key = "C-j", command = "lua require('nvterm.terminal').toggle 'horizontal'" },
+	{ key = "C-`", command = "lua require('nvterm.terminal').toggle 'horizontal'" },
+	{ key = "CS-`", command = "lua require('nvterm.terminal').toggle 'horizontal'" },
 }
 
 for _, v in ipairs(keymap) do

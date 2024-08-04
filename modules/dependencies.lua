@@ -49,9 +49,7 @@ require("lazy").setup({
 	},
 	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 	"NvChad/nvterm",
-	"marko-cerovac/material.nvim",
 	"nvim-treesitter/nvim-treesitter",
-	"Mofiqul/vscode.nvim",
 	"neovim/nvim-lspconfig",
 	"hrsh7th/cmp-nvim-lsp",
 	"hrsh7th/cmp-buffer",
@@ -84,14 +82,18 @@ require("lazy").setup({
 	    end,
 	},
 	"sbdchd/neoformat",
-	"github/copilot.vim",
-	"ahmedkhalf/project.nvim", 
-	"mg979/vim-visual-multi", 
+	-- "github/copilot.vim",
+	"ahmedkhalf/project.nvim",
+	"mg979/vim-visual-multi",
 	"brenoprata10/nvim-highlight-colors",
 	{"romgrk/barbar.nvim", opts = {}, init = function() vim.g.barbar_auto_setup = false end },
 	{
 	    "windwp/nvim-autopairs",
 	    event = "InsertEnter",
 	    opts = {}
-	}
+	},
+
+	-- color themes
+	"Mofiqul/vscode.nvim",
+	"tanvirtin/monokai.nvim",
 })

@@ -4,8 +4,16 @@
 
 local commands = {
 	{ name = "FormatDocument", command = "Neoformat", desc = "Format Document" },
+
 	{ name = "CloseAllEditors", command = "BufferCloseAllButCurrent", desc = "Close All Editors" },
+
 	{ name = "CreateNewFile", command = "BufferCloseAllButCurrent", desc = "Create: New File" },
+
+	{ name = "ColorTheme", command = "Telescope colorscheme", desc = "Preferences: Color Theme" },
+
+	{ name = "ReloadWindow", command = "windo e", desc = "Developer: Reload Window" },
+
+	{ name = "TogglePrimarySideBarVisibility", command = "Neotree toggle", desc = "View: Toggle Primary Side Bar Visibility" },
 };
 
 for _, v in ipairs(commands) do
