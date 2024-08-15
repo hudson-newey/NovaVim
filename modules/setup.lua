@@ -4,6 +4,21 @@
 io.write "Starting NovaVim...";
 
 require("modules.dependencies")
+
+-- set up mason so that it can automatically install all the lsp servers and dependencies
+require("mason").setup({
+	ui = {
+		icons = {
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗"
+		}
+    },
+	ensure_installed = {
+		"tree-sitter"
+	},
+})
+
 require("modules.keymap")
 require("modules.languages")
 require("modules.completions")
@@ -12,16 +27,7 @@ require("modules.commands")
 require("modules.explorer")
 require("modules.settings")
 
-require("nvim-autopairs").setup{}
-require("mason").setup({
-	ui = {
-		icons = {
-			package_installed = "✓",
-			package_pending = "➜",
-			package_uninstalled = "✗"
-		}
-    }
-})
+require("nvim-autopairs").setup()
 
 require("nvterm").setup()
 

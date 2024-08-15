@@ -1,6 +1,15 @@
+local language_servers = { "tsserver", "astro", "angularls", "lua_ls", "bashls", "gopls", "templ", "htmx", "html", "cssls", "ruby_lsp", "rust_analyzer", "tailwindcss", "yamlls", "csharp_ls", "dockerls", "eslint" }
+local tree_sitter_languages = { "c", "cpp", "make", "cmake", "angular", "ruby", "lua", "vim", "vimdoc", "query", "bash", "tsx", "c_sharp", "dockerfile", "gitignore", "go", "xml", "yaml", "json", "python", "r", "scss", "ruby", "rust", "html", "css", "typescript", "javascript", "astro" }
+
+-- mason-lspconfig will automatically install the language servers for you
+require("mason-lspconfig").setup{
+  ensure_installed = language_servers,
+  automatic_installation = true,
+}
+
 require"nvim-treesitter.configs".setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = { "c", "cpp", "make", "cmake", "angular", "ruby", "lua", "vim", "vimdoc", "query", "bash", "tsx", "c_sharp", "dockerfile", "gitignore", "go", "xml", "yaml", "json", "latex", "nix", "python", "r", "scss", "ruby", "rust", "vue", "zig", "html", "css", "typescript", "javascript", "astro" },
+  ensure_installed = tree_sitter_languages,
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -31,9 +40,8 @@ local lspconfig = require("lspconfig")
 lspconfig.tsserver.setup { capabilities = capabilities }
 lspconfig.astro.setup{ capabilities = capabilities }
 lspconfig.angularls.setup{ capabilities = capabilities }
--- lspconfig.lua_ls.setup { capabilities = capabilities }
+lspconfig.lua_ls.setup { capabilities = capabilities }
 lspconfig.bashls.setup{ capabilities = capabilities }
-lspconfig.golangci_lint_ls.setup{ capabilities = capabilities }
 lspconfig.gopls.setup{ capabilities = capabilities }
 lspconfig.templ.setup{ capabilities = capabilities }
 lspconfig.htmx.setup{ capabilities = capabilities }

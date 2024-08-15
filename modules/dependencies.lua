@@ -29,12 +29,14 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	"williamboman/mason.nvim",
+	"williamboman/mason-lspconfig.nvim",
+	"neovim/nvim-lspconfig",
 	{
 		"nvim-telescope/telescope.nvim", branch = "0.1.x",
 		dependencies = { "nvim-lua/plenary.nvim" }
 	},
 	{
-	    "nvim-lualine/lualine.nvim",
+		"nvim-lualine/lualine.nvim",
 	    dependencies = { "nvim-tree/nvim-web-devicons" }
 	},
 	{
@@ -50,7 +52,6 @@ require("lazy").setup({
 	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 	"NvChad/nvterm",
 	"nvim-treesitter/nvim-treesitter",
-	"neovim/nvim-lspconfig",
 	"hrsh7th/cmp-nvim-lsp",
 	"hrsh7th/cmp-buffer",
 	"hrsh7th/cmp-path",
