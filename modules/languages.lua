@@ -1,4 +1,4 @@
-local language_servers = { "tsserver", "astro", "angularls", "lua_ls", "bashls", "gopls", "templ", "htmx", "html", "cssls", "ruby_lsp", "rust_analyzer", "tailwindcss", "yamlls", "csharp_ls", "dockerls", "eslint" }
+local language_servers = { "tsserver", "astro", "angularls", "lua_ls", "bashls", "gopls", "templ", "htmx", "html", "cssls", "rust_analyzer", "tailwindcss", "yamlls", "dockerls", "eslint" }
 local tree_sitter_languages = { "c", "cpp", "make", "cmake", "angular", "ruby", "lua", "vim", "vimdoc", "query", "bash", "tsx", "c_sharp", "dockerfile", "gitignore", "go", "xml", "yaml", "json", "python", "r", "scss", "ruby", "rust", "html", "css", "typescript", "javascript", "astro" }
 
 -- mason-lspconfig will automatically install the language servers for you
@@ -47,11 +47,11 @@ lspconfig.templ.setup{ capabilities = capabilities }
 lspconfig.htmx.setup{ capabilities = capabilities }
 lspconfig.html.setup{ capabilities = capabilities }
 lspconfig.cssls.setup{ capabilities = capabilities }
-lspconfig.ruby_lsp.setup{ capabilities = capabilities }
+-- lspconfig.ruby_lsp.setup{ capabilities = capabilities }
 lspconfig.rust_analyzer.setup{ capabilities = capabilities }
 lspconfig.tailwindcss.setup{ capabilities = capabilities }
 lspconfig.yamlls.setup{ capabilities = capabilities }
-lspconfig.csharp_ls.setup{ capabilities = capabilities }
+-- lspconfig.csharp_ls.setup{ capabilities = capabilities }
 lspconfig.dockerls.setup{ capabilities = capabilities }
 lspconfig.eslint.setup{}
 

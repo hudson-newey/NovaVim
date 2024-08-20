@@ -50,6 +50,11 @@ else
 fi
 EOF
 
+if [ $is_wsl == false ]; then
+
+# if we are on linux, we should pick a terminal emulator
+# we prefer to use alacritty first, then can fallback to xterm if alacritty
+# is not installed
 if [ $use_alacritty == true ] && [ $is_wsl == false ]; then
 	# alacritty startup command
 	cat << EOF >> "$(pwd)/start.sh"
@@ -59,17 +64,19 @@ else
 	# xterm startup command
 	# this is so complicated because we have to load in the fonts, overwrite ctrl + V etc...
 	cat << EOF >> "./start.sh"
-	xterm +sb -bg black -fg white -fa "M+1Code Nerd Font Mono" -fs 10 -title "\$startPath - NovaVim" -name $(pwd)/xterm/.Xresources -e nvim -u $(pwd)/init.lua -- \$@ & > /dev/null
+xterm +sb -bg black -fg white -fa "M+1Code Nerd Font Mono" -fs 10 -title "\$startPath - NovaVim" -name $(pwd)/xterm/.Xresources -e nvim -u $(pwd)/init.lua -- \$@ & > /dev/null
 xrdb -query | grep -q 'XTerm\*vt100\.translationsa' |> /dev/null
 if [ \$? != 0 ]; then xterm -e xrdb -merge ./xterm/.Xresources; fi
 EOF
 fi
 
-# TODO: Handle differnt installation targets better
-if [ $is_wsl == true ]; then
-	cat << EOF >> "$(pwd)/start.sh"
-	nvim -u $(pwd)/init.lua -- \$@
+else
+
+# if we are in WSL, we should use the inline terminal emulator
+cat << EOF >> "$(pwd)/start.sh"
+nvim -u $(pwd)/init.lua -- \$@
 EOF
+
 fi
 
 cat << EOF > "$(pwd)/init.lua"
