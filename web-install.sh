@@ -9,4 +9,4 @@ mkdir -p $installationLocation
 git clone https://github.com/hudson-newey/NovaVim.git $installationLocation
 
 cd $installationLocation
-./install.sh
+./install.py
