@@ -38,7 +38,7 @@ nvim -u {runtime}/init.lua -- $@
 
 def alacritty_starter(runtime: str) -> str:
     return f"""{common_starter(runtime)}
-alacritty -T '$startPath - NovaVim' --config-file {runtime}/alacritty/alacritty.toml -e nvim -u {runtime}/init.lua -- $@ & > /dev/null
+alacritty -T "$startPath - NovaVim" --config-file {runtime}/alacritty/alacritty.toml -e nvim -u {runtime}/init.lua -- $@ & > /dev/null
 """
 
 def xterm_starter(runtime: str) -> str:
