@@ -35,10 +35,7 @@ require("lazy").setup({
 		"nvim-telescope/telescope.nvim", branch = "0.1.x",
 		dependencies = { "nvim-lua/plenary.nvim" }
 	},
-	{
-		"nvim-lualine/lualine.nvim",
-	    dependencies = { "nvim-tree/nvim-web-devicons" }
-	},
+	"windwp/windline.nvim",
 	{
 		-- for breadcrumbs at the top of the window
 		"utilyre/barbecue.nvim",

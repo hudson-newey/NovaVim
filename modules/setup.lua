@@ -23,6 +23,7 @@ require("modules.keymap")
 require("modules.languages")
 require("modules.completions")
 require("modules.ui")
+require("modules.statusLine")
 require("modules.commands")
 require("modules.explorer")
 require("modules.settings")
@@ -34,10 +35,6 @@ require("nvterm").setup()
 require("gitsigns").setup()
 
 require("project_nvim").setup()
-
-require("lualine").setup {
-	options = { theme = "codedark" }
-}
 
 local telescope = require("telescope")
 telescope.setup {
