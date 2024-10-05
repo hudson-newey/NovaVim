@@ -21,16 +21,14 @@ local languages = {
 	{ lsp = "r_language_server", tree_sitter = "r" },
 	{ lsp = "cmake", tree_sitter = "cmake" },
 	{ lsp = "powershell_es", tree_sitter = "powershell" },
-	{ lsp = "texlab", tree_sitter = "latex" },
-	{ lsp = "fsautocomplete", tree_sitter = "fsharp" },
-	{ lsp = "prolog_ls", tree_sitter = "prolog" },
-	{ lsp = "java_language_server", tree_sitter = "java" },
 
 	-- for some reason, the C# and ruby lsps cannot be installed by
 	-- the lsp auto-config
 	-- TODO: figure out why and get ruby and C# working
 	--{ lsp = "rubocop", tree_sitter = "ruby" },
 	--{ lsp = "csharp_ls", tree_sitter = "c_sharp" },
+	-- { lsp = false, tree_sitter = "latex" },
+	-- { lsp = false, tree_sitter = "fsharp" },
 	{ lsp = false, tree_sitter = "ruby" },
 	{ lsp = false, tree_sitter = "c_sharp" },
 
@@ -45,6 +43,8 @@ local languages = {
 	-- the jsx and tsx lsps are covered by eslint
 	{ lsp = false, tree_sitter = "tsx" },
 
+	{ lsp = false, tree_sitter = "prolog" },
+	{ lsp = false, tree_sitter = "java" },
 	{ lsp = false, tree_sitter = "scss" },
 	{ lsp = false, tree_sitter = "json" },
 	{ lsp = false, tree_sitter = "xml" },
