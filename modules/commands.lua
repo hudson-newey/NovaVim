@@ -9,11 +9,14 @@ local commands = {
 
 	{ name = "CreateNewFile", command = "BufferCloseAllButCurrent", desc = "Create: New File" },
 
+	{ name = "RevealActiveFileInExplorerView", command = "Neotree reveal", desc = "File: Reveal Active File In Explorer View" },
+
 	{ name = "ColorTheme", command = "Telescope colorscheme", desc = "Preferences: Color Theme" },
 
 	{ name = "ReloadWindow", command = "windo e", desc = "Developer: Reload Window" },
 
 	{ name = "TogglePrimarySideBarVisibility", command = "Neotree toggle", desc = "View: Toggle Primary Side Bar Visibility" },
+	--{ name = "ToggleStatusBarVisibility", command = "ToggleStatusBar", desc = "View: Toggle Status Bar Visibility" },
 
 	{ name = "Find", command = "Telescope search_history", desc = "Find" },
 

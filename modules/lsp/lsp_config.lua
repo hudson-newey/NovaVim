@@ -22,6 +22,24 @@ local languages = {
 	{ lsp = "cmake", tree_sitter = "cmake" },
 	{ lsp = "powershell_es", tree_sitter = "powershell" },
 
+	-- clangd covers both c and cpp
+	{ lsp = "clangd", tree_sitter = "c" },
+	{ lsp = false, tree_sitter = "cpp" },
+
+	{ lsp = "tailwindcss", tree_sitter = false },
+	{ lsp = "templ", tree_sitter = false },
+	{ lsp = "htmx", tree_sitter = false },
+
+	{ lsp = false, tree_sitter = "tsx" },
+	{ lsp = false, tree_sitter = "prolog" },
+	{ lsp = false, tree_sitter = "java" },
+	{ lsp = false, tree_sitter = "scss" },
+	{ lsp = false, tree_sitter = "json" },
+	{ lsp = false, tree_sitter = "xml" },
+	{ lsp = false, tree_sitter = "gitignore" },
+	{ lsp = false, tree_sitter = "vim" },
+	{ lsp = false, tree_sitter = "vimdoc" },
+
 	-- for some reason, the C# and ruby lsps cannot be installed by
 	-- the lsp auto-config
 	-- TODO: figure out why and get ruby and C# working
@@ -31,26 +49,6 @@ local languages = {
 	-- { lsp = false, tree_sitter = "fsharp" },
 	{ lsp = false, tree_sitter = "ruby" },
 	{ lsp = false, tree_sitter = "c_sharp" },
-
-	{ lsp = "tailwindcss", tree_sitter = false },
-	{ lsp = "templ", tree_sitter = false },
-	{ lsp = "htmx", tree_sitter = false },
-
-	-- clangd covers both c and cpp
-	{ lsp = "clangd", tree_sitter = "c" },
-	{ lsp = false, tree_sitter = "cpp" },
-
-	-- the jsx and tsx lsps are covered by eslint
-	{ lsp = false, tree_sitter = "tsx" },
-
-	{ lsp = false, tree_sitter = "prolog" },
-	{ lsp = false, tree_sitter = "java" },
-	{ lsp = false, tree_sitter = "scss" },
-	{ lsp = false, tree_sitter = "json" },
-	{ lsp = false, tree_sitter = "xml" },
-	{ lsp = false, tree_sitter = "gitignore" },
-	{ lsp = false, tree_sitter = "vim" },
-	{ lsp = false, tree_sitter = "vimdoc" },
 }
 
 local tree_sitter_languages = {}
