@@ -20,6 +20,11 @@ local languages = {
 	{ lsp = "pylsp", tree_sitter = "python" },
 	{ lsp = "r_language_server", tree_sitter = "r" },
 	{ lsp = "cmake", tree_sitter = "cmake" },
+	{ lsp = "powershell_es", tree_sitter = "powershell" },
+	{ lsp = "texlab", tree_sitter = "latex" },
+	{ lsp = "fsautocomplete", tree_sitter = "fsharp" },
+	{ lsp = "prolog_ls", tree_sitter = "prolog" },
+	{ lsp = "java_language_server", tree_sitter = "java" },
 
 	-- for some reason, the C# and ruby lsps cannot be installed by
 	-- the lsp auto-config
