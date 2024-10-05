@@ -20,10 +20,10 @@ require("mason").setup({
 })
 
 require("modules.keymap")
-require("modules.languages")
-require("modules.completions")
+require("modules.lsp.lsp_config")
+require("modules.lsp.completions")
 require("modules.ui")
-require("modules.statusLine")
+require("modules.status_line")
 require("modules.commands")
 require("modules.explorer")
 require("modules.settings")
