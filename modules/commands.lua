@@ -22,6 +22,12 @@ local commands = {
 
 	{ name = "SearchFindInFiles", command = "Telescope live_grep", desc = "Search: Find in Files" },
 
+	-- copy the current files absolute path to the clipboard
+	{ name = "CopyPath", command = ":let @+ = expand('%:p')", desc = "Copy Path" },
+
+	-- copy the current files relative path to the clipboard
+	{ name = "CopyRelativePath", command = "let @+ = expand('%')", desc = "Copy Relative Path" },
+
 	-- I commonly make typos where I make "q" a capital letter
 	-- to fix this, I make an alias to the "q" command
 	{ name = "Q", command = "q", desc = "" },
