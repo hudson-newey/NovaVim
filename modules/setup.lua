@@ -32,7 +32,9 @@ require("nvim-autopairs").setup()
 
 require("nvterm").setup()
 
-require("gitsigns").setup()
+require("gitsigns").setup {
+	current_line_blame = true
+}
 
 require("project_nvim").setup()
 
