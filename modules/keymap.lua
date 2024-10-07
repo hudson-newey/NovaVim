@@ -1,3 +1,23 @@
+function ToggleNeoTree()
+	vim.cmd "Neotree toggle"
+	vim.cmd "wincmd ="
+end
+vim.api.nvim_create_user_command(
+	"ToggleNeoTree",
+	ToggleNeoTree,
+	{}
+)
+
+function RevealNeoTree()
+	vim.cmd "Neotree reveal"
+	vim.cmd "wincmd ="
+end
+vim.api.nvim_create_user_command(
+	"RevealNeoTree",
+	RevealNeoTree,
+	{}
+)
+
 local keymap = {
 	{ key = "<C-P>", command = "Telescope find_files" },
 	{ key = "<CS-P>", command = "Telescope commands" },
@@ -6,8 +26,8 @@ local keymap = {
 
 	{ key = "<CS-O>", command = "Telescope lsp_document_symbols" },
 
-	{ key = "<C-B>", command = "Neotree toggle", insert = true },
-	{ key = "<CS-E>", command = "Neotree reveal", insert = true },
+	{ key = "<C-B>", command = "ToggleNeoTree", insert = true },
+	{ key = "<CS-E>", command = "RevealNeoTree", insert = true },
 
 	{ key = "<C-F>", command = "Telescope current_buffer_fuzzy_find" },
 	{ key = "<CS-F>", command = "Telescope live_grep" },

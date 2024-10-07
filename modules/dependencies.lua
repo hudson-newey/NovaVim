@@ -94,4 +94,13 @@ require("lazy").setup({
 	-- color themes
 	"Mofiqul/vscode.nvim",
 	"tanvirtin/monokai.nvim",
+	"xiantang/darcula-dark.nvim",
+	"sainnhe/edge",
+	"Mofiqul/dracula.nvim",
+	"navarasu/onedark.nvim",
+	"sainnhe/gruvbox-material",
+	"AlexvZyl/nordic.nvim",
+	"sainnhe/everforest",
+	"catppuccin/nvim",
+	"folke/tokyonight.nvim",
 })

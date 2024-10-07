@@ -13,6 +13,11 @@ vim.cmd "let &colorcolumn='80,120'"
 -- enable line numbers
 vim.cmd "set nu"
 
+-- disable line wrapping
+-- this is a controversial change, but I have made it because it keeps in line
+-- with the same defaults that vscode has
+vim.wo.wrap = false
+
 -- show trailing whitespace
 -- TODO: This isn"t currently working with indent-blankline
 -- vim.cmd "set list"

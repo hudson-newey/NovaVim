@@ -7,5 +7,9 @@ size = 10
 bindings = [
 	{ key = "F", mods = "Control | Shift", chars = "\u2660" },
 	{ key = "Insert", mods = "Control", action = "Copy" },
-	{ key = "Insert", mods = "Shift", action = "Paste" }
+	{ key = "Insert", mods = "Shift", action = "Paste" },
+	{ key = "F11", action = "ToggleFullscreen" }
 ]
+
+[window]
+#decorations = "None"
