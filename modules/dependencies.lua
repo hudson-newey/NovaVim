@@ -91,6 +91,7 @@ require("lazy").setup({
 	    opts = {}
 	},
 	"folke/zen-mode.nvim",
+	"terrortylor/nvim-comment",
 
 	-- color themes
 	"Mofiqul/vscode.nvim",

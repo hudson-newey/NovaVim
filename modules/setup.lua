@@ -100,3 +100,5 @@ require("neo-tree").setup {
 
 require("barbecue").setup()
 require("barbecue.ui").toggle(true)
+
+require('nvim_comment').setup()

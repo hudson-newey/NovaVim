@@ -55,6 +55,8 @@ local keymap = {
 	{ key = "<C-j>", command = "lua require('nvterm.terminal').toggle 'horizontal'" },
 	{ key = "<C-`>", command = "lua require('nvterm.terminal').toggle 'horizontal'" },
 	{ key = "<CS-`>", command = "lua require('nvterm.terminal').toggle 'horizontal'" },
+
+	{ key = "<C-/>", command = "CommentToggle" },
 }
 
 for _, v in ipairs(keymap) do
