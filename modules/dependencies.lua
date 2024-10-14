@@ -90,6 +90,7 @@ require("lazy").setup({
 	    event = "InsertEnter",
 	    opts = {}
 	},
+	"folke/zen-mode.nvim",
 
 	-- color themes
 	"Mofiqul/vscode.nvim",

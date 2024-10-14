@@ -15,6 +15,8 @@ local commands = {
 
 	{ name = "ReloadWindow", command = "windo e", desc = "Developer: Reload Window" },
 
+	{ name = "ToggleZenMode", command = "ZenMode", desc = "View: Toggle Zen Mode" },
+
 	{ name = "TogglePrimarySideBarVisibility", command = "Neotree toggle", desc = "View: Toggle Primary Side Bar Visibility" },
 	--{ name = "ToggleStatusBarVisibility", command = "ToggleStatusBar", desc = "View: Toggle Status Bar Visibility" },
 
