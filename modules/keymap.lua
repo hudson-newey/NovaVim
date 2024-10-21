@@ -57,6 +57,12 @@ local keymap = {
 	{ key = "<CS-`>", command = "lua require('nvterm.terminal').toggle 'horizontal'" },
 
 	{ key = "<C-/>", command = "CommentToggle" },
+
+	{ key = "<C-\\->", command = "wincmd =" },
+	{ key = "<C-+>", command = "wincmd =" },
+	{ key = "<C-0>", command = "wincmd =" },
+
+	{ key = "<AS-F>", command = "Neoformat" },
 }
 
 for _, v in ipairs(keymap) do

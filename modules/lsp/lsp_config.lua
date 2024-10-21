@@ -1,5 +1,6 @@
 -- configure the lsp keymap
 require("modules.lsp.lsp_keymap")
+require("modules.lsp.goto_definition")
 
 -- I define lsps and their tree sitter counter parts in a table so that I can
 -- easily see what languages I have set up by default, and what languages

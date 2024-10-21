@@ -92,6 +92,7 @@ require("lazy").setup({
 	},
 	"folke/zen-mode.nvim",
 	"terrortylor/nvim-comment",
+	"petertriho/nvim-scrollbar",
 
 	-- color themes
 	"Mofiqul/vscode.nvim",
