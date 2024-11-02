@@ -63,6 +63,9 @@ local keymap = {
 	{ key = "<C-0>", command = "wincmd =" },
 
 	{ key = "<AS-F>", command = "Neoformat" },
+
+	-- make it so that when you jump to a mark it centers the result
+	{ key = "<'>-<'>", command = "normal ''zz" }
 }
 
 for _, v in ipairs(keymap) do
