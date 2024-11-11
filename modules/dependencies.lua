@@ -94,6 +94,12 @@ require("lazy").setup({
 	"terrortylor/nvim-comment",
 	"petertriho/nvim-scrollbar",
 
+	-- to make the column characters (rulers) smaller
+	{ "lukas-reineke/virt-column.nvim", opts = {} },
+
+	-- for automatic indent type detection
+	"NMAC427/guess-indent.nvim",
+
 	-- color themes
 	"Mofiqul/vscode.nvim",
 	"tanvirtin/monokai.nvim",

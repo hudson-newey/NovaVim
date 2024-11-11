@@ -21,5 +21,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	for _, v in ipairs(keymap) do
 	    vim.keymap.set("n", v.key, v.command, opts)
 	end
+
+	-- by default, GuessIndent will echo back the indent level
+	-- I use the "silent" command so that the output is not printed
+	vim.cmd "silent GuessIndent"
     end,
 })

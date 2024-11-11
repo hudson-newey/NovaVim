@@ -103,3 +103,6 @@ require("barbecue.ui").toggle(true)
 
 require("nvim_comment").setup()
 require("scrollbar").setup()
+
+require("virt-column").setup()
+require("guess-indent").setup()
