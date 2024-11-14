@@ -1,6 +1,6 @@
 # NovaVim (2nvim)
 
-![image](https://github.com/user-attachments/assets/4609c13c-c424-4cb9-83a7-749d6f369328)
+![image](https://github.com/user-attachments/assets/f72d635e-e8cd-4e06-8994-96fa51cdda3c)
 
 ## Installation
 
