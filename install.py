@@ -15,6 +15,9 @@ def is_wsl() -> bool:
 def is_windows() -> bool:
     return sys.platform == "win32"
 
+def has_neovide() -> bool:
+    return shutil.which("neovide") is not None
+
 def has_alacritty() -> bool:
     return shutil.which("alacritty") is not None
 
@@ -38,14 +41,14 @@ nvim -u {runtime}/init.lua -- $@
 
 def alacritty_starter(runtime: str) -> str:
     return f"""{common_starter(runtime)}
-alacritty -T "$startPath - NovaVim" --class nvim --config-file {runtime}/alacritty/alacritty.toml -e nvim -u {runtime}/init.lua -- $@ & > /dev/null
+alacritty -T "$startPath - NovaVim" --class nvim --config-file {runtime}/configs/alacritty.toml -e nvim -u {runtime}/init.lua -- $@ & > /dev/null
 """
 
 def xterm_starter(runtime: str) -> str:
     return f"""{common_starter(runtime)}
-xterm +sb -bg black -fg white -fa "M+1Code Nerd Font Mono" -fs 10 -title "$startPath - NovaVim" -name {runtime}/xterm/.Xresources -e nvim -u {runtime}/init.lua -- $@ & > /dev/null
+xterm +sb -bg black -fg white -fa "M+1Code Nerd Font Mono" -fs 10 -title "$startPath - NovaVim" -name {runtime}/configs/.Xresources -e nvim -u {runtime}/init.lua -- $@ & > /dev/null
 xrdb -query | grep -q 'XTerm/*vt100/.translationsa' |> /dev/null
-if [ $? != 0 ]; then xterm -e xrdb -merge ./xterm/.Xresources; fi
+if [ $? != 0 ]; then xterm -e xrdb -merge ./configs/.Xresources; fi
 """
 
 def init_module(runtime: str) -> str:

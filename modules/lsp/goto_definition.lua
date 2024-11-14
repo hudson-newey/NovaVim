@@ -10,7 +10,7 @@ local util = require 'vim.lsp.util'
 local params = util.make_position_params()
 local results, err = vim.lsp.buf_request_sync(0, 'textDocument/definition', params, 1000)
 if results then
-	for client_id, result in pairs(results) do
+	for _ in pairs(results) do
 		goto_handler()
 	end
 end

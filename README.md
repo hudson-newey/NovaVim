@@ -6,7 +6,7 @@
 
 Installing will create an executable in `~/.local/bin` called `2nvim` that will open NovaVim
 
-1. Install the "M+1Code Nerd Font Mono" font
+1. Install the "Jetbrains Mono" font family (medium style)
 
 ### Using the Git repository (recommened)
 

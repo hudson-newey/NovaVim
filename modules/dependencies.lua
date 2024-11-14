@@ -35,7 +35,6 @@ require("lazy").setup({
 		"nvim-telescope/telescope.nvim", branch = "0.1.x",
 		dependencies = { "nvim-lua/plenary.nvim" }
 	},
-	"windwp/windline.nvim",
 	{
 		-- for breadcrumbs at the top of the window
 		"utilyre/barbecue.nvim",
@@ -90,9 +89,18 @@ require("lazy").setup({
 	    event = "InsertEnter",
 	    opts = {}
 	},
+
+	-- support for zen mode
 	"folke/zen-mode.nvim",
+
+	-- comment out lines using ctrl + /
 	"terrortylor/nvim-comment",
+
+	-- scrollbar with error symbols
 	"petertriho/nvim-scrollbar",
+
+	-- status line
+	"windwp/windline.nvim",
 
 	-- to make the column characters (rulers) smaller
 	{ "lukas-reineke/virt-column.nvim", opts = {} },

@@ -8,6 +8,21 @@ vim.api.nvim_create_user_command(
 	{}
 )
 
+function OpenSidebar()
+	local focusedWindowNumber = vim.fn.winnr()
+
+	vim.cmd "ToggleNeoTree"
+
+	-- re-focus the original window
+	-- local windows = vim.api.nvim_list_wins()
+	-- vim.api.nvim_set_current_win(focusedWindowNumber)
+end
+vim.api.nvim_create_user_command(
+	"OpenSidebar",
+	OpenSidebar,
+	{}
+)
+
 function RevealNeoTree()
 	vim.cmd "Neotree reveal"
 	vim.cmd "wincmd ="
@@ -26,7 +41,7 @@ local keymap = {
 
 	{ key = "<CS-O>", command = "Telescope lsp_document_symbols" },
 
-	{ key = "<C-B>", command = "ToggleNeoTree", insert = true },
+	{ key = "<C-B>", command = "OpenSidebar", insert = true },
 	{ key = "<CS-E>", command = "RevealNeoTree", insert = true },
 
 	{ key = "<C-F>", command = "Telescope current_buffer_fuzzy_find" },
@@ -50,7 +65,7 @@ local keymap = {
 
 	{ key = "<C-]>", command = "BufferNext" },
 	{ key = "<CS-]>", command = "BufferPrevious" },
-	{ key = "<C-Q>", command = "BufferClose" },
+	{ key = "<CS-Q>", command = "BufferClose" },
 
 	{ key = "<C-j>", command = "lua require('nvterm.terminal').toggle 'horizontal'" },
 	{ key = "<C-`>", command = "lua require('nvterm.terminal').toggle 'horizontal'" },
@@ -69,11 +84,11 @@ local keymap = {
 }
 
 for _, v in ipairs(keymap) do
-	vim.api.nvim_set_keymap("n", v.key, ":" .. v.command .. "<CR>", { noremap = true, silent = true })
+	vim.api.nvim_set_keymap("n", v.key, ":silent " .. v.command .. "<CR>", { noremap = true, silent = true })
 
 	if v.insert then
 		-- exit insert mode, execute the command, then return to insert mode
-		vim.api.nvim_set_keymap("i", v.key, "<ESC>:" .. v.command .. "<CR>i", { noremap = true, silent = true })
+		vim.api.nvim_set_keymap("i", v.key, "<ESC>:silent " .. v.command .. "<CR>i", { noremap = true, silent = true })
 	end
 end
 

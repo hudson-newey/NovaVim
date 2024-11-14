@@ -3,7 +3,7 @@
 -- Visual Studio Code
 
 local commands = {
-	{ name = "FormatDocument", command = "Neoformat", desc = "Format Document" },
+	{ name = "FormatDocument", command = "silent Neoformat", desc = "Format Document" },
 
 	{ name = "CloseAllEditors", command = "BufferCloseAllButCurrent", desc = "Close All Editors" },
 
