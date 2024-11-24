@@ -15,9 +15,6 @@ def is_wsl() -> bool:
 def is_windows() -> bool:
     return sys.platform == "win32"
 
-def has_neovide() -> bool:
-    return shutil.which("neovide") is not None
-
 def has_alacritty() -> bool:
     return shutil.which("alacritty") is not None
 
@@ -36,17 +33,18 @@ fi
 
 def wsl_starter(runtime: str) -> str:
     return f"""{common_starter(runtime)}
-nvim -u {runtime}/init.lua -- $@
+{runtime}/setup.sh {runtime}/init.lua $@
 """
 
+# we have to override the $SHELL environment variable to support underline errors
 def alacritty_starter(runtime: str) -> str:
     return f"""{common_starter(runtime)}
-alacritty -T "$startPath - NovaVim" --class nvim --config-file {runtime}/configs/alacritty.toml -e nvim -u {runtime}/init.lua -- $@ & > /dev/null
+alacritty -T "$startPath - NovaVim" --class nvim --config-file {runtime}/configs/alacritty.toml -e {runtime}/setup.sh {runtime}/init.lua $@
 """
 
 def xterm_starter(runtime: str) -> str:
     return f"""{common_starter(runtime)}
-xterm +sb -bg black -fg white -fa "M+1Code Nerd Font Mono" -fs 10 -title "$startPath - NovaVim" -name {runtime}/configs/.Xresources -e nvim -u {runtime}/init.lua -- $@ & > /dev/null
+xterm +sb -bg black -fg white -fa "M+1Code Nerd Font Mono" -fs 10 -title "$startPath - NovaVim" -name {runtime}/configs/.Xresources -e {runtime}/setup.sh {runtime}/init.lua $@
 xrdb -query | grep -q 'XTerm/*vt100/.translationsa' |> /dev/null
 if [ $? != 0 ]; then xterm -e xrdb -merge ./configs/.Xresources; fi
 """
@@ -78,7 +76,7 @@ def main() -> None:
         starter_template = xterm_starter(runtime)
     else:
         print("You do not have a supported terminal emulator installed")
-        print("Supported terminals: Alacritty, XTerm")
+        print("Supported terminals: Alacritty, XTerm, WSL")
         os.exit(1)
 
     with open(starter_path, "w") as file:

@@ -41,6 +41,10 @@ local languages = {
 	{ lsp = false, tree_sitter = "vim" },
 	{ lsp = false, tree_sitter = "vimdoc" },
 
+	-- markdown support for trouble
+	{ lsp = false, tree_sitter = "markdown" },
+	{ lsp = false, tree_sitter = "markdown_inline" },
+
 	-- for some reason, the C# and ruby lsps cannot be installed by
 	-- the lsp auto-config
 	-- TODO: figure out why and get ruby and C# working
@@ -110,3 +114,8 @@ for _, language in ipairs(languages) do
 		lspconfig[lsp].setup{ capabilities = capabilities }
 	end
 end
+
+vim.diagnostic.config({
+	virtual_text = false,
+	underline = true,
+})

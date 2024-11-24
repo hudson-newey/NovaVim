@@ -1,6 +1,6 @@
 function ToggleNeoTree()
 	vim.cmd "Neotree toggle"
-	vim.cmd "wincmd ="
+	ResizeBuffers()
 end
 vim.api.nvim_create_user_command(
 	"ToggleNeoTree",
@@ -33,6 +33,15 @@ vim.api.nvim_create_user_command(
 	{}
 )
 
+function ResizeBuffers()
+	vim.cmd "wincmd ="
+end
+vim.api.nvim_create_user_command(
+	"ResizeBuffers",
+	ResizeBuffers,
+	{}
+)
+
 local keymap = {
 	{ key = "<C-P>", command = "Telescope find_files" },
 	{ key = "<CS-P>", command = "Telescope commands" },
@@ -61,8 +70,6 @@ local keymap = {
 
 	{ key = "<ESC>", command = "noh" },
 
-	{ key = "<C-Q>", command = "BufferClose" },
-
 	{ key = "<C-]>", command = "BufferNext" },
 	{ key = "<CS-]>", command = "BufferPrevious" },
 	{ key = "<CS-Q>", command = "BufferClose" },
@@ -73,14 +80,18 @@ local keymap = {
 
 	{ key = "<C-/>", command = "CommentToggle" },
 
-	{ key = "<C-\\->", command = "wincmd =" },
-	{ key = "<C-+>", command = "wincmd =" },
-	{ key = "<C-0>", command = "wincmd =" },
+	-- when the user changes the font size, we want to to resize the
+	-- buffers so that all of the buffers change at the same rate
+	-- if we did not resize the buffers, some would be larger/smaller than
+	-- others after resizing
+	{ key = "<C-\\->", command = "ResizeBuffers" },
+	{ key = "<C-+>", command = "ResizeBuffers" },
+	{ key = "<C-0>", command = "ResizeBuffers" },
 
 	{ key = "<AS-F>", command = "Neoformat" },
 
 	-- make it so that when you jump to a mark it centers the result
-	{ key = "<'>-<'>", command = "normal ''zz" }
+	{ key = "\\'\\'", command = "normal zz" },
 }
 
 for _, v in ipairs(keymap) do

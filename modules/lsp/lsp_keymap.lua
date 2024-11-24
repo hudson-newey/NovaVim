@@ -10,12 +10,18 @@ local keymap = {
 	{ key = "<C-.>", command = vim.lsp.buf.code_action },
 }
 
+local nvim_command = vim.api.nvim_command
+
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(ev)
     vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+
+    -- only show error dialogs after 500 ms
+    vim.cmd "set updatetime=600"
+    nvim_command('autocmd CursorHold <buffer> lua vim.diagnostic.open_float()')
 
     local opts = { buffer = ev.buf }
 	for _, v in ipairs(keymap) do

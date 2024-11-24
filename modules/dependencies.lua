@@ -28,9 +28,12 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+	-- I purposely put the dependencies first so that I know that the lsp
+	-- functionality is ready below
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	"neovim/nvim-lspconfig",
+
 	{
 		"nvim-telescope/telescope.nvim", branch = "0.1.x",
 		dependencies = { "nvim-lua/plenary.nvim" }
