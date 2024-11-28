@@ -111,6 +111,16 @@ require("lazy").setup({
 	-- for automatic indent type detection
 	"NMAC427/guess-indent.nvim",
 
+	-- support folding regions
+	{
+	    "kevinhwang91/nvim-ufo",
+	    dependencies = { "kevinhwang91/promise-async" }
+        },
+
+	-- QOL improvements to UI
+	-- e.g. LSP refactoring and select boards
+	"stevearc/dressing.nvim",
+
 	-- color themes
 	"Mofiqul/vscode.nvim",
 	"tanvirtin/monokai.nvim",

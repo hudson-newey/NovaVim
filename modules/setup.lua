@@ -102,7 +102,21 @@ require("barbecue").setup()
 require("barbecue.ui").toggle(true)
 
 require("nvim_comment").setup()
-require("scrollbar").setup()
+require("scrollbar").setup({
+    handle = {
+        text = "   ",
+    },
+    -- we double the marks here so that the scrollbar width is 2 characters
+    -- wide instead of the default 1
+    marks = {
+        Search = { text = { "--", "==" } },
+        Error = { text = { "--", "==" } },
+        Warn = { text = { "--", "==" } },
+        Info = { text = { "--", "==" } },
+        Hint = { text = { "--", "==" } },
+        Misc = { text = { "--", "==" } },
+    }
+})
 
 require("virt-column").setup()
 require("guess-indent").setup()

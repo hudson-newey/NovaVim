@@ -19,9 +19,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)
     vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-    -- only show error dialogs after 500 ms
+    -- only show error dialogs after 600 ms
     vim.cmd "set updatetime=600"
-    nvim_command('autocmd CursorHold <buffer> lua vim.diagnostic.open_float()')
+
+    -- TODO: there is a bug where when the diagnostic window opens, it automatically
+    -- receives focus. This is undesired, so I have tempoarily disabled it
+    -- if you want to see an error, use the F8 key
+    -- nvim_command("autocmd CursorHold <buffer> lua vim.diagnostic.open_float({ nil, { focusable = false } })")
 
     local opts = { buffer = ev.buf }
 	for _, v in ipairs(keymap) do

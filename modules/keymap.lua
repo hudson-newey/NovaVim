@@ -92,6 +92,9 @@ local keymap = {
 
 	-- make it so that when you jump to a mark it centers the result
 	{ key = "\\'\\'", command = "normal zz" },
+
+	-- using the function keys
+	{ key = "<F8>", command = "lua vim.diagnostic.open_float()" },
 }
 
 for _, v in ipairs(keymap) do

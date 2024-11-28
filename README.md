@@ -20,7 +20,7 @@ $ git clone https://github.com/hudson-newey/NovaVim.git
 3.
 
 ```sh
-$ ./install.sh
+$ ./install.py
 >
 ```
 

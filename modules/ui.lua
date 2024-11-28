@@ -40,3 +40,9 @@ vim.cmd[[
   augroup END
   ]]
 --]=====]
+
+-- for some reason Neovim decides that it should render certain text inside the
+-- text editor as bold/italic e.g. if the output html looks bold or italic
+-- I have disabled it because it looks like an error, and HTML is not used for
+-- styling, so it is semantically incorrect
+vim.cmd "let html_no_rendering=1"
