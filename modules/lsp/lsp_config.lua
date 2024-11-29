@@ -12,15 +12,12 @@ local languages = {
 	{ lsp = "angularls", tree_sitter = "angular" },
 	{ lsp = "lua_ls", tree_sitter = "lua" },
 	{ lsp = "bashls", tree_sitter = "bash" },
-	{ lsp = "gopls", tree_sitter = "go" },
 	{ lsp = "html", tree_sitter = "html" },
 	{ lsp = "cssls", tree_sitter = "css" },
 	{ lsp = "rust_analyzer", tree_sitter = "rust" },
 	{ lsp = "yamlls", tree_sitter = "yaml" },
 	{ lsp = "dockerls", tree_sitter = "dockerfile" },
 	{ lsp = "pylsp", tree_sitter = "python" },
-	{ lsp = "r_language_server", tree_sitter = "r" },
-	{ lsp = "cmake", tree_sitter = "cmake" },
 	{ lsp = "powershell_es", tree_sitter = "powershell" },
 
 	-- clangd covers both c and cpp
@@ -54,6 +51,9 @@ local languages = {
 	-- { lsp = false, tree_sitter = "fsharp" },
 	{ lsp = false, tree_sitter = "ruby" },
 	{ lsp = false, tree_sitter = "c_sharp" },
+	{ lsp = false, tree_sitter = "go" },
+	{ lsp = false, tree_sitter = "cmake" },
+	{ lsp = false, tree_sitter = "r" },
 }
 
 local tree_sitter_languages = {}
@@ -102,7 +102,7 @@ require"nvim-treesitter.configs".setup {
     additional_vim_regex_highlighting = false,
   },
 }
-
+--
 -- Set up lspconfig
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require("lspconfig")

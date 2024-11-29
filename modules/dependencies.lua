@@ -69,18 +69,6 @@ require("lazy").setup({
 	      -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
 	    }
 	},
-	{
-	    "wfxr/minimap.vim",
-	    build = "cargo install --locked code-minimap",
-	    lazy = false,
-	    cmd = { "Minimap", "MinimapClose", "MinimapToggle", "MinimapRefresh", "MinimapUpdateHighlight" },
-	    init = function()
-		vim.cmd("let g:minimap_width = 14")
-		-- disable auto start because it"s buggy when opening a directory
-		vim.cmd("let g:minimap_auto_start = 0")
-		vim.cmd("let g:minimap_auto_start_win_enter = 1")
-	    end,
-	},
 	"sbdchd/neoformat",
 	-- "github/copilot.vim",
 	"ahmedkhalf/project.nvim",
