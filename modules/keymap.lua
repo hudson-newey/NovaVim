@@ -122,3 +122,7 @@ vim.cmd "inoremap <expr> <TAB> pumvisible() ? '<C-y>' : '<TAB>'"
 -- and uses that as a signal to trigger the ctrl + shift + F shortcut
 -- see: https://stackoverflow.com/a/78694090
 vim.keymap.set("n", "♠", ":Telescope live_grep<CR>")
+
+-- overwrite for ctrl + shift + o
+-- { key = "<CS-O>", command = "Telescope lsp_document_symbols" },
+vim.keymap.set("n", "♡", ":Telescope lsp_document_symbols<CR>")

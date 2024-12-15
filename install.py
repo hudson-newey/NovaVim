@@ -3,6 +3,10 @@ import os
 import sys
 import stat
 import shutil
+import subprocess
+
+
+UNSATISFIED_DEPENDENCY_ERROR = 1
 
 
 def is_wsl() -> bool:
@@ -65,6 +69,37 @@ if [ $? != 0 ]; then xterm -e xrdb -merge ./configs/.Xresources; fi
 """
 
 
+def has_font(font: str) -> bool:
+    try:
+        output = subprocess.check_output(["fc-list", font])
+        if output == b"":
+            return False
+    except Exception:
+        return False
+
+    return True
+
+
+def check_required_fonts() -> None:
+    required_fonts = ["JetBrainsMono-Medium", "M+1CodeNerdFontMono-Medium"]
+
+    for font in required_fonts:
+        if not has_font(font):
+            unsatisfied_font_warning(font)
+
+
+def unsatisfied_font_warning(required_font: str) -> None:
+    print(f"Warning: You do not have {required_font} installed")
+    print("NovaVim might not work as expected");
+    print("Do you wish to proceed?")
+
+    user_feedback = input("(y/n)")
+    if user_feedback[0].lower() == "y":
+        return
+
+    os.exit(UNSATISFIED_DEPENDENCY_ERROR)
+
+
 def init_module(runtime: str) -> str:
     return f"""
 package.path = '{runtime}/?.lua;'..package.path
@@ -94,7 +129,9 @@ def main() -> None:
     else:
         print("You do not have a supported terminal emulator installed")
         print("Supported terminals: Alacritty, XTerm, WSL")
-        os.exit(1)
+        os.exit(UNSATISFIED_DEPENDENCY_ERROR)
+
+    check_required_fonts()
 
     with open(starter_path, "w") as file:
         file.write(starter_template)

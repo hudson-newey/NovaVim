@@ -6,6 +6,7 @@ size = 9
 [keyboard]
 bindings = [
 	{ key = "F", mods = "Control | Shift", chars = "\u2660" },
+	{ key = "O", mods = "Control | Shift", chars = "\u2661" },
 	{ key = "Insert", mods = "Control", action = "Copy" },
 	{ key = "Insert", mods = "Shift", action = "Paste" },
 	{ key = "F11", action = "ToggleFullscreen" }
