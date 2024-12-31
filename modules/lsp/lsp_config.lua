@@ -19,6 +19,7 @@ local languages = {
 	{ lsp = "dockerls", tree_sitter = "dockerfile" },
 	{ lsp = "pylsp", tree_sitter = "python" },
 	{ lsp = "powershell_es", tree_sitter = "powershell" },
+	{ lsp = "gopls", tree_sitter = "ruby" },
 
 	-- clangd covers both c and cpp
 	{ lsp = "clangd", tree_sitter = "c" },
@@ -26,7 +27,6 @@ local languages = {
 
 	{ lsp = "tailwindcss", tree_sitter = false },
 	{ lsp = "templ", tree_sitter = false },
-	{ lsp = "htmx", tree_sitter = false },
 
 	{ lsp = false, tree_sitter = "tsx" },
 	{ lsp = false, tree_sitter = "prolog" },
@@ -49,7 +49,7 @@ local languages = {
 	--{ lsp = "csharp_ls", tree_sitter = "c_sharp" },
 	-- { lsp = false, tree_sitter = "latex" },
 	-- { lsp = false, tree_sitter = "fsharp" },
-	{ lsp = false, tree_sitter = "ruby" },
+	-- { lsp = "htmx", tree_sitter = false },
 	{ lsp = false, tree_sitter = "c_sharp" },
 	{ lsp = false, tree_sitter = "go" },
 	{ lsp = false, tree_sitter = "cmake" },

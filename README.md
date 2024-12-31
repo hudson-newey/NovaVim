@@ -6,15 +6,26 @@
 
 Installing will create an executable in `~/.local/bin` called `2nvim` that will open NovaVim
 
-1. Install the "Jetbrains Mono" font family (medium style)
-2. install the "M+" nerd font (medium style)
+### Required Dependencies
+
+- "Jetbrains Mono" font family (medium style)
+- "M+" nerd font (medium style)
+- Ripgrep
+- Python 3 (for installer automated)
 
 ### Using the Git repository (recommened)
 
-2. Clone the GitHub repository
+1. Clone the GitHub repository
 
 ```sh
 $ git clone https://github.com/hudson-newey/NovaVim.git
+>
+```
+
+2. "cd" into the directory
+
+```sh
+$ cd NovaVim
 >
 ```
 
