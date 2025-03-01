@@ -30,7 +30,7 @@ $ ./install.py
 Because you are installing by piping to shell, please check the script at <https://raw.githubusercontent.com/hudson-newey/NovaVim/main/web-install.sh> and <https://raw.githubusercontent.com/hudson-newey/NovaVim/main/install.py> before running it
 
 ```sh
-$ curl -sL https://raw.githubusercontent.com/hudson-newey/NovaVim/main/web-install.sh | sh
+$ curl -sL https://raw.githubusercontent.com/hudson-newey/NovaVim/main/web-install.sh | bash
 >
 ```
 
