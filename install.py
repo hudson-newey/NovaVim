@@ -21,6 +21,15 @@ def is_windows() -> bool:
     return sys.platform == "win32"
 
 
+# neovide doesn't have the level of configuration that I require for 2nvim
+# most importantly, you can't get ctrl + V working, can't re-bind keys and
+# neovide comes inbuilt with a bunch of hidden shortcuts e.g. ctrl + shift + \
+# that you cannot override
+def has_neovide() -> bool:
+    return False
+    # return shutil.which("neovide") is not None
+
+
 def has_alacritty() -> bool:
     return shutil.which("alacritty") is not None
 
@@ -58,6 +67,16 @@ def wsl_starter(runtime: str) -> str:
 def alacritty_starter(runtime: str) -> str:
     return f"""{common_starter(runtime)}
 alacritty -T "$startPath - NovaVim" --class nvim --config-file {runtime}/configs/alacritty.toml -e {runtime}/setup.sh {runtime}/init.lua $@ & > /dev/null
+"""
+
+
+# we have to override the $SHELL environment variable to support underline errors
+def neovide_starter(runtime: str) -> str:
+    home_dir = os.environ["HOME"]
+    os.makedirs(f"{home_dir}/.config/neovide/", exist_ok=True)
+    shutil.copy(f"{runtime}/configs/neovide.toml", f"{home_dir}/.config/neovide/config.toml")
+    return f"""{common_starter(runtime)}
+neovide --maximized $@ -- -u {runtime}/init.lua & > /dev/null
 """
 
 
@@ -122,6 +141,8 @@ def main() -> None:
     starter_template = ""
     if is_wsl():
         starter_template = wsl_starter(runtime)
+    elif has_neovide():
+        starter_template = neovide_starter(runtime)
     elif has_alacritty():
         starter_template = alacritty_starter(runtime)
     elif has_xterm():

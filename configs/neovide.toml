@@ -1,0 +1,47 @@
+# Neovide Configuration based on your Alacritty config
+
+[window]
+# decorations = "none"  # Neovide doesn't have a direct equivalent for "None" decorations.
+# You might need to rely on your OS's window manager for borderless/decoration-less behavior.
+# Or use the following to remove title bar:
+# titlebar_hidden = true
+
+[font]
+normal = { family = "JetBrains Mono", style = "Medium" }
+size = 9
+offset = { x = 0, y = 2 }
+
+[keyboard]
+bindings = [
+    { key = "F", mods = "Control|Shift", input = "\u2660" },
+    { key = "O", mods = "Control|Shift", input = "\u2661" },
+    { key = "Insert", mods = "Control", action = "Copy" },
+    { key = "Insert", mods = "Shift", action = "Paste" },
+    { key = "F11", action = "ToggleFullscreen" },
+]
+
+[env]
+TERM = "xterm-256color" # Neovide uses xterm-256color by default, or you can use alacritty if you have the definition.
+
+# transparency = 0.8
+
+# If you want to enable ligatures:
+# ligatures = true
+
+# If you want to configure the cursor:
+# [cursor]
+# style = "block"
+# blinking = true
+
+# If you want to set a background image:
+# background_image = "path/to/image.png"
+# background_image_opacity = 0.5
+
+# If you want to set a background color:
+# background_color = "#282828"
+
+# If you want to set foreground color:
+# foreground_color = "#ebdbb2"
+
+# If you want to set the theme:
+# theme = "catppuccin_mocha"

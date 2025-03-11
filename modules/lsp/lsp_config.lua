@@ -6,7 +6,7 @@ require("modules.lsp.goto_definition")
 -- easily see what languages I have set up by default, and what languages
 -- have syntax highlighting through tree sitter and not lsp (and the inverse)
 local languages = {
-	{ lsp = "tsserver", tree_sitter = "typescript" },
+	{ lsp = "ts_ls", tree_sitter = "typescript" },
 	{ lsp = "eslint", tree_sitter = "javascript" },
 	{ lsp = "astro", tree_sitter = "astro" },
 	{ lsp = "angularls", tree_sitter = "angular" },

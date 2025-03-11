@@ -1,3 +1,5 @@
+vim.opt.termguicolors = true
+
 ---- change this to background=light if you want light mode
 vim.cmd "set background=dark"
 

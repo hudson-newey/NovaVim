@@ -35,10 +35,6 @@ require("lazy").setup({
 	"neovim/nvim-lspconfig",
 
 	{
-		"nvim-telescope/telescope.nvim", branch = "0.1.x",
-		dependencies = { "nvim-lua/plenary.nvim" }
-	},
-	{
 		-- for breadcrumbs at the top of the window
 		"utilyre/barbecue.nvim",
 		name = "barbecue",
@@ -70,16 +66,19 @@ require("lazy").setup({
 	    }
 	},
 	"sbdchd/neoformat",
-	-- "github/copilot.vim",
+	"github/copilot.vim",
 	"ahmedkhalf/project.nvim",
 	"mg979/vim-visual-multi",
 	"brenoprata10/nvim-highlight-colors",
-	{"romgrk/barbar.nvim", opts = {}, init = function() vim.g.barbar_auto_setup = false end },
 	{
 	    "windwp/nvim-autopairs",
 	    event = "InsertEnter",
 	    opts = {}
 	},
+
+	-- bufferline
+	{"romgrk/barbar.nvim", opts = {}, init = function() vim.g.barbar_auto_setup = false end },
+	--{"akinsho/bufferline.nvim", dependencies = "nvim-tree/nvim-web-devicons"},
 
 	-- support for zen mode
 	"folke/zen-mode.nvim",
@@ -99,6 +98,10 @@ require("lazy").setup({
 	-- for automatic indent type detection
 	"NMAC427/guess-indent.nvim",
 
+	-- for some reason, neovim will not resize buffers when the window
+	-- resizes. This plugin fixes this weird nvim decision
+	"kwkarlwang/bufresize.nvim",
+
 	-- support folding regions
 	{
 	    "kevinhwang91/nvim-ufo",
@@ -108,6 +111,12 @@ require("lazy").setup({
 	-- QOL improvements to UI
 	-- e.g. LSP refactoring and select boards
 	"stevearc/dressing.nvim",
+
+	-- startup splash screen
+	{
+		"startup-nvim/startup.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim", "nvim-telescope/telescope-file-browser.nvim" },
+	},
 
 	-- color themes
 	"Mofiqul/vscode.nvim",
@@ -121,4 +130,10 @@ require("lazy").setup({
 	"sainnhe/everforest",
 	"catppuccin/nvim",
 	"folke/tokyonight.nvim",
+
+	{
+		"nvim-telescope/telescope.nvim", branch = "0.1.x",
+		dependencies = { "nvim-lua/plenary.nvim" }
+	},
+
 })

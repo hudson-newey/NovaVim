@@ -44,7 +44,19 @@ telescope.setup {
 		layout_config = {
 			prompt_position = "top",
 		},
-		file_ignore_patterns = { "node_modules", ".git" },
+		file_ignore_patterns = {
+			"node_modules",
+			".git",
+			"target",
+		},
+		mappings = {
+			i = {
+				["<C-CR>"] = require('telescope.actions').select_vertical,
+			},
+			n = {
+				["<C-CR>"] = require('telescope.actions').select_vertical,
+			},
+		},
 	},
 	buffers = {
 		sort_lastused = true,
@@ -56,16 +68,21 @@ telescope.setup {
 		},
 	},
 }
-require("telescope.builtin").buffers({
-	sort_lastused = true,
-	ignore_current_buffer = true,
-	sort_mru = true
-})
+
+-- TODO: I don't know why I originally included this telescope plugin/builtin
+-- The buffers builtin lets you search through the open buffers in telescope
+-- however, I never made a keymap for anything in this module
+--require("telescope.builtin").buffers({
+--	sort_lastused = true,
+--	ignore_current_buffer = true,
+--	sort_mru = true
+--})
 
 require("ibl").setup()
 
-require("nvterm.terminal")
-vim.opt.termguicolors = true
+require("startup").setup({
+	theme = "evil"
+})
 
 require("nvim-highlight-colors").setup {
 	render = "virtual",
@@ -78,6 +95,7 @@ require("nvim-highlight-colors").setup {
 -- If I don"t import this module last, tree sitter will overwrite the colors
 require("modules.highlights")
 
+local done_first_defocus = false
 require("neo-tree").setup {
 	window = {
 		width = 35,
@@ -95,6 +113,17 @@ require("neo-tree").setup {
 	mappings = {
 		["v"] = "open_vsplit",
 		["^v"] = "open_vsplit",
+	},
+	event_handlers = {
+		{
+			event = "neo_tree_buffer_enter",
+			handler = function()
+				if not done_first_defocus then
+					vim.api.nvim_input("<C-w>l")
+					done_first_defocus = true
+				end
+			end,
+		},
 	},
 }
 
@@ -120,3 +149,9 @@ require("scrollbar").setup({
 
 require("virt-column").setup()
 require("guess-indent").setup()
+
+
+-- for some reason, neovim will not resize buffers when the window
+-- resizes. This plugin fixes this weird nvim decision
+-- TODO: This also effects the explorer, when it should not
+require("bufresize").setup()
