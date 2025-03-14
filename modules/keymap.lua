@@ -49,6 +49,7 @@ local keymap = {
 	{ key = "<C-O>", command = "Telescope projects" },
 
 	{ key = "<CS-O>", command = "Telescope lsp_document_symbols" },
+	{ key = "<C-T>", command = "Telescope lsp_document_symbols" },
 
 	{ key = "<C-B>", command = "OpenSidebar", insert = true },
 	{ key = "<CS-E>", command = "RevealNeoTree", insert = true },

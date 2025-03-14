@@ -14,6 +14,7 @@ bindings = [
 
 [window]
 # decorations = "None"
+startup_mode = "Maximized"
 
 [env]
 TERM = "alacritty"
