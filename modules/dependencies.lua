@@ -130,6 +130,7 @@ require("lazy").setup({
 	"sainnhe/everforest",
 	"catppuccin/nvim",
 	"folke/tokyonight.nvim",
+	"rebelot/kanagawa.nvim",
 
 	{
 		"nvim-telescope/telescope.nvim", branch = "0.1.x",

@@ -128,8 +128,7 @@ require('setup')
 
 
 def main() -> None:
-    home = os.getenv("HOME")
-    bin_target = home + "/.local/bin/2nvim"
+    bin_target = "/usr/local/bin/2nvim"
     runtime = os.path.dirname(os.path.realpath(__file__))
     starter_path = runtime + "/start.sh"
     init_module_path = runtime + "/init.lua"
@@ -171,4 +170,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
