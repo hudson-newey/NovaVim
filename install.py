@@ -70,6 +70,14 @@ alacritty -T "$startPath - NovaVim" --class nvim --config-file {runtime}/configs
 """
 
 
+# this alacritty starter uses a yaml config so that older alacritty versions
+# present on Debian stable and OpenSUSE leap can use an alacritty config
+# instead of falling back to xterm
+def yaml_alacritty_starter(runtime: str) -> str:
+    return f"""{common_starter(runtime)}
+alacritty -T "$startPath - NovaVim" --class nvim --config-file {runtime}/configs/alacritty.yaml -e {runtime}/setup.sh {runtime}/init.lua $@ & > /dev/null
+"""
+
 # we have to override the $SHELL environment variable to support underline errors
 def neovide_starter(runtime: str) -> str:
     home_dir = os.environ["HOME"]
@@ -116,7 +124,7 @@ def unsatisfied_font_warning(required_font: str) -> None:
     if user_feedback[0].lower() == "y":
         return
 
-    os.exit(UNSATISFIED_DEPENDENCY_ERROR)
+    sys.exit(UNSATISFIED_DEPENDENCY_ERROR)
 
 
 def init_module(runtime: str) -> str:
@@ -143,13 +151,21 @@ def main() -> None:
     elif has_neovide():
         starter_template = neovide_starter(runtime)
     elif has_alacritty():
-        starter_template = alacritty_starter(runtime)
+        alacritty_version = subprocess.check_output(["alacritty", "--version"]).decode("utf-8")
+        [major, minor, patch] = alacritty_version.split(".")
+        [_program_name, major] = major.split(" ")
+
+        # full support for toml configs was added in version 0.4
+        if int(major) <= 0 and int(minor) < 14:
+            starter_template = yaml_alacritty_starter(runtime)
+        else:
+            starter_template = alacritty_starter(runtime)
     elif has_xterm():
         starter_template = xterm_starter(runtime)
     else:
         print("You do not have a supported terminal emulator installed")
         print("Supported terminals: Alacritty, XTerm, WSL")
-        os.exit(UNSATISFIED_DEPENDENCY_ERROR)
+        sys.exit(UNSATISFIED_DEPENDENCY_ERROR)
 
     check_required_fonts()
 
