@@ -115,9 +115,19 @@ def check_required_fonts() -> None:
             unsatisfied_font_warning(font)
 
 
+def install_dependencies(runtime: str) -> None:
+    scripts = [
+        f"{runtime}/scripts/install-deps.sh",
+        f"{runtime}/scripts/install-lsps.sh",
+    ]
+
+    for script in scripts:
+        subprocess.run(["bash", "-c", script])
+
+
 def unsatisfied_font_warning(required_font: str) -> None:
     print(f"Warning: You do not have {required_font} installed")
-    print("NovaVim might not work as expected");
+    print("NovaVim might not work as expected")
     print("Do you wish to proceed?")
 
     user_feedback = input("(y/n)")
@@ -167,7 +177,10 @@ def main() -> None:
         print("Supported terminals: Alacritty, XTerm, WSL")
         sys.exit(UNSATISFIED_DEPENDENCY_ERROR)
 
+    # I purposely install dependencies after installing fonts so that you get
+    # unrecoverable errors sooner
     check_required_fonts()
+    install_dependencies(runtime)
 
     with open(starter_path, "w") as file:
         file.write(starter_template)
@@ -176,12 +189,13 @@ def main() -> None:
     with open(init_module_path, "w") as file:
         file.write(init_module_template)
 
-    current_permissions = os.stat(starter_path).st_mode
-    new_permissions = current_permissions | stat.S_IXUSR
+    starter_perms = os.stat(starter_path).st_mode
+    new_starter_perms = starter_perms | stat.S_IXUSR
 
     print(f"Creating symlink in {starter_path}")
-    os.chmod(starter_path, new_permissions)
+    os.chmod(starter_path, new_starter_perms)
     os.symlink(starter_path, bin_target)
+    os.chmod(bin_target, new_starter_perms)
 
 
 if __name__ == "__main__":

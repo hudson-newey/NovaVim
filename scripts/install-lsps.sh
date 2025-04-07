@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+echo "[NovaVim] Installing LSPS"
+
 # ts_ls
 sudo npm install -g typescript typescript-language-server
 
