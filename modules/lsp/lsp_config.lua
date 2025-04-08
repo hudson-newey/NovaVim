@@ -6,10 +6,17 @@ require("modules.lsp.goto_definition")
 -- easily see what languages I have set up by default, and what languages
 -- have syntax highlighting through tree sitter and not lsp (and the inverse)
 local languages = {
-	{ lsp = "ts_ls", tree_sitter = "typescript" },
-	{ lsp = "eslint", tree_sitter = "javascript" },
+	-- TODO: For some reason, these lsps fail to install through Mason
+	-- The install script automatically installs these lsps, so I am not
+	-- too concerned, but it is something that I should be aware of
+	-- { lsp = "ts_ls", tree_sitter = "typescript" },
+	-- { lsp = "eslint", tree_sitter = "javascript" },
+	-- { lsp = "angularls", tree_sitter = "angular" },
+	{ lsp = false, tree_sitter = "typescript" },
+	{ lsp = false, tree_sitter = "javascript" },
+	{ lsp = false, tree_sitter = "angular" },
+
 	{ lsp = "astro", tree_sitter = "astro" },
-	{ lsp = "angularls", tree_sitter = "angular" },
 	{ lsp = "lua_ls", tree_sitter = "lua" },
 	{ lsp = "bashls", tree_sitter = "bash" },
 	{ lsp = "html", tree_sitter = "html" },
