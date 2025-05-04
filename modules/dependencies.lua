@@ -75,6 +75,7 @@ require("lazy").setup({
 	    event = "InsertEnter",
 	    opts = {}
 	},
+	"nvim-treesitter/nvim-treesitter-textobjects",
 
 	-- bufferline
 	{"romgrk/barbar.nvim", opts = {}, init = function() vim.g.barbar_auto_setup = false end },
