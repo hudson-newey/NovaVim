@@ -147,7 +147,8 @@ require("scrollbar").setup({
     }
 })
 
-require("rainbow-delimiters.setup").setup()
+-- TODO: Re-enable rainbow brackets. See dependencies.lua for more information
+-- require("rainbow-delimiters.setup").setup()
 
 require("virt-column").setup()
 require("guess-indent").setup()

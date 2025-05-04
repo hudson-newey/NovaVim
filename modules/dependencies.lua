@@ -77,7 +77,9 @@ require("lazy").setup({
 	"nvim-treesitter/nvim-treesitter-textobjects",
 
 	-- rainbow brackets which are now enabled in vscode by default
-	"HiPhish/rainbow-delimiters.nvim",
+	-- TODO: This is temporarily disabled because it does not interact
+	-- well with autopairs
+	-- "HiPhish/rainbow-delimiters.nvim",
 
 	-- uncomment this line if you want copilot support
 	-- "github/copilot.vim",
