@@ -147,6 +147,8 @@ require("scrollbar").setup({
     }
 })
 
+require("rainbow-delimiters.setup").setup()
+
 require("virt-column").setup()
 require("guess-indent").setup()
 

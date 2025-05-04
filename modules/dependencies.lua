@@ -66,7 +66,6 @@ require("lazy").setup({
 	    }
 	},
 	"sbdchd/neoformat",
-	"github/copilot.vim",
 	"ahmedkhalf/project.nvim",
 	"mg979/vim-visual-multi",
 	"brenoprata10/nvim-highlight-colors",
@@ -76,6 +75,12 @@ require("lazy").setup({
 	    opts = {}
 	},
 	"nvim-treesitter/nvim-treesitter-textobjects",
+
+	-- rainbow brackets which are now enabled in vscode by default
+	"HiPhish/rainbow-delimiters.nvim",
+
+	-- uncomment this line if you want copilot support
+	-- "github/copilot.vim",
 
 	-- bufferline
 	{"romgrk/barbar.nvim", opts = {}, init = function() vim.g.barbar_auto_setup = false end },
