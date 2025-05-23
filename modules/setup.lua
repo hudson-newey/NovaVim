@@ -3,6 +3,8 @@
 -- Installing the dependencies
 io.write "Starting NovaVim...";
 
+require("modules.warnings")
+
 require("modules.dependencies")
 
 -- set up mason so that it can automatically install all the lsp servers and dependencies
@@ -13,7 +15,7 @@ require("mason").setup({
 			package_pending = "➜",
 			package_uninstalled = "✗"
 		}
-    },
+	},
 	ensure_installed = {
 		"tree-sitter"
 	},
@@ -78,7 +80,23 @@ telescope.setup {
 --	sort_mru = true
 --})
 
-require("ibl").setup()
+local indentation_guide_char = "┊"
+require("ibl").setup({
+	indent = {
+		-- The default vertical line character is quite large and makes
+		-- the code base look noisy.
+		-- To make the indentation guides less noisy, I have used the
+		-- dotted line box drawing character.
+		-- While this is unconventional for editors, I have chosen this
+		-- character to maintain the same level of noise as other
+		-- editors.
+		--
+		-- We have to set both char and tab_char so that workspaces
+		-- that use spaces and tab characters have the same look.
+		char = indentation_guide_char,
+		tab_char = indentation_guide_char
+	}
+})
 
 require("startup").setup({
 	theme = "evil"
@@ -132,19 +150,20 @@ require("barbecue.ui").toggle(true)
 
 require("nvim_comment").setup()
 require("scrollbar").setup({
-    handle = {
-        text = "   ",
-    },
-    -- we double the marks here so that the scrollbar width is 2 characters
-    -- wide instead of the default 1
-    marks = {
-        Search = { text = { "--", "==" } },
-        Error = { text = { "--", "==" } },
-        Warn = { text = { "--", "==" } },
-        Info = { text = { "--", "==" } },
-        Hint = { text = { "--", "==" } },
-        Misc = { text = { "--", "==" } },
-    }
+	handle = {
+		text = "  ",
+	},
+	-- we double the marks here so that the scrollbar width is 2 characters
+	-- wide instead of the default 1
+	marks = {
+		Cursor = { text = " •" },
+		Search = { text = { "--", "==" } },
+		Error = { text = { "--", "==" } },
+		Warn = { text = { "--", "==" } },
+		Info = { text = { "--", "==" } },
+		Hint = { text = { "--", "==" } },
+		Misc = { text = { "--", "==" } },
+	}
 })
 
 -- TODO: Re-enable rainbow brackets. See dependencies.lua for more information

@@ -108,7 +108,11 @@ def has_font(font: str) -> bool:
 
 
 def check_required_fonts() -> None:
-    required_fonts = ["JetBrainsMono-Medium", "M+1CodeNerdFontMono-Medium"]
+    required_fonts = [
+        "JetBrainsMono-Regular",
+        "JetBrainsMono-Medium",
+        "M+1CodeNerdFontMono-Medium",
+    ]
 
     for font in required_fonts:
         if not has_font(font):

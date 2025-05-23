@@ -1,8 +1,8 @@
 function dir_exists(path)
-  if (lfs.attributes(path, "mode") == "directory") then
-    return true
-  end
-  return false
+	if (lfs.attributes(path, "mode") == "directory") then
+		return true
+	end
+	return false
 end
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -16,14 +16,14 @@ local hasTelescopeInstalled = (vim.uv or vim.loop).fs_stat(telescopePath)
 -- Therefore, we check for an expected depdendency. If we do not find it, we reinstall Lazy
 -- In an attempt to self-resolve issues
 if not hasLazyInstalled or not hasTelescopeInstalled then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -44,7 +44,7 @@ require("lazy").setup({
 			"nvim-tree/nvim-web-devicons",
 		},
 	},
-	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+	{ "lukas-reineke/indent-blankline.nvim", main = "ibl" },
 	"NvChad/nvterm",
 	"nvim-treesitter/nvim-treesitter",
 	"hrsh7th/cmp-nvim-lsp",
