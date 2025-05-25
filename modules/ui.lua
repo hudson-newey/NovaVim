@@ -15,6 +15,14 @@ vim.cmd "let &colorcolumn='80,120'"
 -- enable line numbers
 vim.cmd "set nu"
 
+-- make the cursor blink
+-- This command looks really complex because we have to support different modes
+--
+-- See the following stack overflow answer to see where I got this from
+-- https://stackoverflow.com/a/63924002
+-- vim.cmd "set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
+vim.o.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
+
 -- disable line wrapping
 -- this is a controversial change, but I have made it because it keeps in line
 -- with the same defaults that vscode has
