@@ -99,7 +99,7 @@ local keymap = {
 
 	-- Interact with locally running ollama model using David-Kunz/gen.nvim
 	{ key = "<CS-]>", command = "Gen Chat" },
-	{ key = "<CS-[>", command = "Gen ReviewCode" },
+	{ key = "<CS-[>", command = "Gen Review_Code" },
 	{ key = "<CS-I>", command = "Gen Change" },
 }
 
