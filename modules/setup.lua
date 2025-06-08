@@ -177,3 +177,8 @@ require("guess-indent").setup()
 -- resizes. This plugin fixes this weird nvim decision
 -- TODO: This also effects the explorer, when it should not
 require("bufresize").setup()
+
+-- We initialize the llms module last because I suspect that llms are an external
+-- dependency that makes it more flaky.
+-- Therefore, if the llms fail to init, we are left with a mostly functional editor.
+require("modules.ai.setup").setup()

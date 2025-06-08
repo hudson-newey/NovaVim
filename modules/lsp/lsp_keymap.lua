@@ -1,6 +1,7 @@
 -- See `:help vim.lsp.*` for documentation on any of the below commands
 local keymap = {
 	{ key = "gd", command = vim.lsp.buf.definition },
+	{ key = "gD", command = vim.lsp.buf.declaration },
 	{ key = "<F12>", command = vim.lsp.buf.definition },
 
 	{ key = "<F2>", command = vim.lsp.buf.rename },

@@ -96,10 +96,16 @@ local keymap = {
 
 	-- using the function keys
 	{ key = "<F8>", command = "lua vim.diagnostic.open_float()" },
+
+	-- Interact with locally running ollama model using David-Kunz/gen.nvim
+	{ key = "<CS-]>", command = "Gen Chat" },
+	{ key = "<CS-[>", command = "Gen ReviewCode" },
+	{ key = "<CS-I>", command = "Gen Change" },
 }
 
 for _, v in ipairs(keymap) do
 	vim.api.nvim_set_keymap("n", v.key, ":silent " .. v.command .. "<CR>", { noremap = true, silent = true })
+	vim.api.nvim_set_keymap("v", v.key, ":'<,'>" .. v.command .. "<CR>", { noremap = true, silent = true })
 
 	if v.insert then
 		-- exit insert mode, execute the command, then return to insert mode

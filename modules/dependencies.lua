@@ -1,3 +1,5 @@
+local ai_dependency_table = require("modules.ai.dependencies")
+
 function dir_exists(path)
 	if (lfs.attributes(path, "mode") == "directory") then
 		return true
@@ -81,8 +83,8 @@ require("lazy").setup({
 	-- well with autopairs
 	-- "HiPhish/rainbow-delimiters.nvim",
 
-	-- uncomment this line if you want copilot support
-	-- "github/copilot.vim",
+	-- This table is conditionally empty depending on your config.lua
+	table.unpack(ai_dependency_table),
 
 	-- bufferline
 	{"romgrk/barbar.nvim", opts = {}, init = function() vim.g.barbar_auto_setup = false end },
@@ -101,7 +103,7 @@ require("lazy").setup({
 	"windwp/windline.nvim",
 
 	-- to make the column characters (rulers) smaller
-	{ "lukas-reineke/virt-column.nvim", opts = {} },
+	"lukas-reineke/virt-column.nvim",
 
 	-- for automatic indent type detection
 	"NMAC427/guess-indent.nvim",
