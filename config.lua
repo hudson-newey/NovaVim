@@ -2,7 +2,7 @@ local dark_mode = true
 local colorscheme = "vscode"
 
 local has_llm_support = true
-local ollama_model = "gemma3"
+local ollama_model = "codellama"
 
 return {
 	dark_mode = dark_mode,
