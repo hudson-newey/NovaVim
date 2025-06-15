@@ -98,10 +98,10 @@ local keymap = {
 	{ key = "<F8>", command = "lua vim.diagnostic.open_float()" },
 
 	-- Interact with locally running ollama model using David-Kunz/gen.nvim
-	{ key = "<C-'>", command = "Gen Chat" },
-	{ key = "<CS-]>", command = "Gen Generate" },
-	{ key = "<CS-[>", command = "Gen Review_Code", visual = true },
-	{ key = "<CS-I>", command = "Gen Change", visual = true },
+	-- { key = "<C-'>", command = "Gen Chat" },
+	-- { key = "<CS-]>", command = "Gen Generate" },
+	-- { key = "<CS-[>", command = "Gen Review_Code", visual = true },
+	-- { key = "<CS-I>", command = "Gen Change", visual = true },
 }
 
 for _, v in ipairs(keymap) do

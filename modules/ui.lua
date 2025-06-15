@@ -7,7 +7,7 @@ vim.cmd "colorscheme vscode"
 
 -- by using laststatus=3 there will be a global status bar across all
 -- panes similar to vscode
-vim.cmd "set laststatus=3"
+vim.opt.laststatus = 3
 
 -- set rulers
 vim.cmd "let &colorcolumn='80,120'"

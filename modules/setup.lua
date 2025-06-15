@@ -37,14 +37,18 @@ require("nvterm").setup()
 require("gitsigns").setup {
 	current_line_blame = true
 }
+require("git-conflict").setup()
 
 require("project_nvim").setup()
 
 local telescope = require("telescope")
 telescope.setup {
 	defaults = {
+		layout_strategy = "horizontal",
 		layout_config = {
 			prompt_position = "top",
+			preview_width = 0.35,
+			-- width = 0.9,
 		},
 		file_ignore_patterns = {
 			"node_modules",

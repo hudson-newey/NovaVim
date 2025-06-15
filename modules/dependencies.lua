@@ -78,6 +78,8 @@ require("lazy").setup({
 	},
 	"nvim-treesitter/nvim-treesitter-textobjects",
 
+	"akinsho/git-conflict.nvim",
+
 	-- rainbow brackets which are now enabled in vscode by default
 	-- TODO: This is temporarily disabled because it does not interact
 	-- well with autopairs
