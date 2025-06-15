@@ -1,9 +1,13 @@
+local config = require("config")
+
+if config.dark_mode then
+  vim.o.background = "dark"
+else
+  vim.o.background = "light"
+end
+
+vim.cmd ("colorscheme " .. config.colorscheme)
 vim.opt.termguicolors = true
-
----- change this to background=light if you want light mode
-vim.cmd "set background=dark"
-
-vim.cmd "colorscheme vscode"
 
 -- by using laststatus=3 there will be a global status bar across all
 -- panes similar to vscode
