@@ -1,12 +1,5 @@
 local ai_dependency_table = require("modules.ai.dependencies")
 
-function dir_exists(path)
-	if (lfs.attributes(path, "mode") == "directory") then
-		return true
-	end
-	return false
-end
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 local telescopePath = lazypath .. "/telescope.nvim"
 

@@ -32,6 +32,37 @@ vim.o.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-b
 -- with the same defaults that vscode has
 vim.wo.wrap = false
 
+vim.opt.cursorline = true
+vim.opt.sidescrolloff = 8
+vim.opt.smartindent = true
+vim.opt.autoindent = true
+
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+vim.opt.lazyredraw = true
+
+vim.opt.backup = false
+vim.opt.writebackup = false
+vim.opt.swapfile = false
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.expand("~/.vim/undodir")
+vim.opt.updatetime = 50
+vim.opt.timeoutlen = 500
+vim.opt.autoread = true
+vim.opt.autowrite = false
+
+vim.opt.hidden = true
+vim.opt.errorbells = false
+vim.opt.backspace = "indent,eol,start"
+vim.opt.autochdir = false
+
+vim.opt.mouse = "a"
+vim.opt.clipboard:append("unnamedplus")
+
+-- Add git status to left of line numbers
+vim.opt.signcolumn = "yes"
+
 -- show trailing whitespace
 -- TODO: This isn"t currently working with indent-blankline
 -- vim.cmd "set list"

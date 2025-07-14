@@ -58,6 +58,9 @@ telescope.setup {
 		mappings = {
 			i = {
 				["<C-CR>"] = require('telescope.actions').select_vertical,
+
+				-- pressing <Esc> closes Telescope instead of going into "normal" mode
+				["<Esc>"] = require('telescope.actions').close,
 			},
 			n = {
 				["<C-CR>"] = require('telescope.actions').select_vertical,
