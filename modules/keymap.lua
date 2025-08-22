@@ -42,6 +42,37 @@ vim.api.nvim_create_user_command(
 	{}
 )
 
+function FloatNextError()
+	local opts = { cursor_position = vim.api.nvim_win_get_cursor(0) }
+	local curr_buf = vim.api.nvim_get_current_buf()
+	local diagnostics = vim.diagnostic.get(curr_buf, { lnum = opts.cursor_position[1] - 1 })
+
+	-- Check if there is at least one diagnostic under the cursor column
+	local found = false
+	local col = opts.cursor_position[2]
+	for _, d in ipairs(diagnostics) do
+		local range = d.range or {}
+		local start_col = range.start and range.start.character or d.col
+		local end_col = range["end"] and range["end"].character or d.end_col
+
+		if start_col and end_col and col >= start_col and col < end_col then
+			found = true
+			break
+		end
+	end
+
+	if not found then
+		vim.diagnostic.goto_next()
+	end
+
+	vim.diagnostic.open_float()
+end
+vim.api.nvim_create_user_command(
+	"FloatNextError",
+	FloatNextError,
+	{}
+)
+
 local keymap = {
 	{ key = "<C-P>", command = "Telescope find_files" },
 	{ key = "<CS-P>", command = "Telescope commands" },
@@ -95,7 +126,7 @@ local keymap = {
 	{ key = "\\'\\'", command = "normal zz" },
 
 	-- using the function keys
-	{ key = "<F8>", command = "lua vim.diagnostic.open_float()" },
+	{ key = "<F8>", command = "FloatNextError" },
 
 	-- Interact with locally running ollama model using David-Kunz/gen.nvim
 	{ key = "<C-'>", command = "Gen Chat" },
@@ -137,3 +168,14 @@ vim.keymap.set("n", "♠", ":Telescope live_grep<CR>")
 -- overwrite for ctrl + shift + o
 -- { key = "<CS-O>", command = "Telescope lsp_document_symbols" },
 vim.keymap.set("n", "♡", ":Telescope lsp_document_symbols<CR>")
+
+-- Move the current buffer to the left/right window like vscode
+-- ctrl + alt + left/right
+local function moveBuffer(direction)
+	local cur_buf = vim.api.nvim_get_current_buf()
+	vim.cmd('wincmd ' .. direction)
+	vim.api.nvim_set_current_buf(cur_buf)
+end
+
+vim.keymap.set("n", "<C-M-Left>", function() moveBuffer("h") end, { noremap = true, silent = true })
+vim.keymap.set("n", "<C-M-Right>", function() moveBuffer("l") end, { noremap = true, silent = true })

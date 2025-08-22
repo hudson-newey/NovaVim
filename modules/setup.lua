@@ -47,7 +47,9 @@ telescope.setup {
 		layout_strategy = "horizontal",
 		layout_config = {
 			prompt_position = "top",
-			preview_width = 0.35,
+			horizontal = {
+				preview_width = 0.35,
+			},
 			-- width = 0.9,
 		},
 		file_ignore_patterns = {

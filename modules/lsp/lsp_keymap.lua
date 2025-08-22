@@ -1,8 +1,19 @@
+function GotoDefinition()
+	vim.lsp.buf.definition();
+	vim.cmd "norm zz"
+end
+vim.api.nvim_create_user_command(
+	"GotoDefinition",
+	GotoDefinition,
+	{}
+)
+
 -- See `:help vim.lsp.*` for documentation on any of the below commands
 local keymap = {
-	{ key = "gd", command = vim.lsp.buf.definition },
+	{ key = "gd", command = GotoDefinition },
 	{ key = "gD", command = vim.lsp.buf.declaration },
 	{ key = "<F12>", command = vim.lsp.buf.definition },
+	{ key = "<S-F12>", command = vim.lsp.buf.references },
 
 	{ key = "<F2>", command = vim.lsp.buf.rename },
 
@@ -10,8 +21,6 @@ local keymap = {
 	{ key = "<C-K>", command = vim.lsp.buf.code_action },
 	{ key = "<C-.>", command = vim.lsp.buf.code_action },
 }
-
-local nvim_command = vim.api.nvim_command
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -26,7 +35,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- TODO: there is a bug where when the diagnostic window opens, it automatically
     -- receives focus. This is undesired, so I have tempoarily disabled it
     -- if you want to see an error, use the F8 key
-    -- nvim_command("autocmd CursorHold <buffer> lua vim.diagnostic.open_float({ nil, { focusable = false } })")
+    -- vim.api.nvim_command("autocmd CursorHold <buffer> lua vim.diagnostic.open_float({ nil, { focusable = false } })")
 
     local opts = { buffer = ev.buf }
 	for _, v in ipairs(keymap) do
