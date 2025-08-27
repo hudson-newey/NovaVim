@@ -29,6 +29,15 @@ require("lazy").setup({
 	"williamboman/mason-lspconfig.nvim",
 	"neovim/nvim-lspconfig",
 
+	"mfussenegger/nvim-dap",
+	{
+		"rcarriga/nvim-dap-ui",
+		dependencies = {
+			"mfussenegger/nvim-dap",
+			"nvim-neotest/nvim-nio"
+		}
+	},
+
 	{
 		-- for breadcrumbs at the top of the window
 		"utilyre/barbecue.nvim",

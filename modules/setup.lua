@@ -21,9 +21,10 @@ require("mason").setup({
 	},
 })
 
+require("modules.lsp.setup")
+require("modules.debugger.setup")
+
 require("modules.keymap")
-require("modules.lsp.lsp_config")
-require("modules.lsp.completions")
 require("modules.ui")
 require("modules.status_line")
 require("modules.commands")
